@@ -1,0 +1,24 @@
+• isalpha
+• isdigit
+• isalnum
+• isascii
+• isprint
+• strlen   ok 
+• memset
+• bzero
+• memcpy
+• memmove
+• strlcpy
+• strlcat
+• toupper
+• tolower
+• strchr
+• strrchr
+• strncmp
+• memchr
+• memcmp
+• strnstr
+• atoi     ok 
+
+calloc
+strdup

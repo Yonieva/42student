@@ -1,0 +1,51 @@
+• isalpha  ok
+• isdigit  ok
+• isalnum  ok
+• isascii  ok
+• isprint  ok
+• strlen   ok 
+• memset   ok
+• bzero    ok
+• memcpy   ok
+• memmove  ok
+• strlcpy  ok / non teste / en tete stcpy non reconnu
+• strlcat  ok / non teste / en tete stcpy non reconnu
+• toupper  ok
+• tolower  ok
+• strchr   ok
+• strrchr  ok
+• strncmp  ok
+• memchr   ok
+<<<<<<< HEAD
+• memcmp   ok
+=======
+• memcmp
+>>>>>>> de94530a01f009f0a42dc656bc052e79191f7085
+• strnstr  ok / non test / segmentation fault
+• atoi     ok 
+
+•calloc    ok
+•strdup    ok
+
+•ft_substr
+•ft_strjoin
+•ft_strtrim
+•ft_split
+•ft_itoa
+•ft_strmapi
+•ft_strteri
+•ft_putchar_fd
+•ft_putstr_fd
+•ft_putendl_fd
+•ft_putnbr_fd
+
+BONUS
+ft_lstnew
+ft_lstadd_front
+ft_lstsize
+ft_lstlast
+ft_lstadd_back
+ft_lstdelone
+ft_lstclear
+ft_lstiter
+ft_lstmap
