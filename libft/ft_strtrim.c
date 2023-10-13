@@ -1,40 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 02:23:23 by yonieva           #+#    #+#             */
-/*   Updated: 2023/09/25 02:23:57 by yonieva          ###   ########.fr       */
+/*   Created: 2023/10/12 20:36:32 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/12 20:38:40 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(char *str1, char *str2)
+char	*ft_strtrim(const char *str, const char *set)
 {
-	int	i;
-	int	j;
+	size_t	start;
+	size_t	end;
 
-	i = 0;
-	j = 0;
-	if (str2[j] == '\0')
-	{
-		return (str1);
-	}
-	while (str1[i] != '\0')
-	{
-		while (str1[i + j] == str2[j] && str1[i + j] != '\0')
-		{
-			j++;
-		}
-		if (str2[j] == '\0')
-		{
-			return (str1 + i);
-		}
-		i++;
-		j = 0;
-	}
-	return (0);
+	start = 0;
+	end = 0;
+	if (str[start] == '\0' || set[start] == '\0')
+		return (NULL);
+	while (str[start] != '\0' && ft_strchr(set, str[start]))
+		start++;
+	end = ft_strlen(str) - 1;
+	while (end > 0 && ft_strchr(set, str[end]))
+		end--;
+	return (ft_substr(str, start, end - start + 1));
 }

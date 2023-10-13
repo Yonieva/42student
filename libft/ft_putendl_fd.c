@@ -1,40 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/25 22:38:56 by yonieva           #+#    #+#             */
-/*   Updated: 2023/09/25 22:39:14 by yonieva          ###   ########.fr       */
+/*   Created: 2023/10/12 21:33:36 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/12 21:34:32 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(char *str, int c)
+void	ft_putendl_fd(char *str, int fd)
 {
-	int	i;
-
-	i = 0;
-	if (c == 0)
+	if (str)
 	{
-		return (&str[i]);
-	}
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	while (str[i] != c && i != 0)
-	{
-		i--;
-	}
-	if (str[i] == c)
-	{
-		return (&str[i]);
-	}
-	else
-	{
-		return (NULL);
+		ft_putstr_fd(str, fd);
+		ft_putchar_fd('\n', fd);
 	}
 }

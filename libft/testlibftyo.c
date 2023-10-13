@@ -111,13 +111,13 @@ printf("FONCTION char *ft_strdup(const char *src)\n");
 
     if (duplicate != NULL) 
 	{
-        printf("Chaîne source : %s\n", source);
-        printf("Chaîne dupliquée : %s\n", duplicate);
+        printf("Chaine source : %s\n", source);
+        printf("Chaine dupliquee : %s\n", duplicate);
 
         free(duplicate);
     } else 
 	{
-        printf("Échec de l'allocation de mémoire.\n");
+        printf("Echec de l'allocation de memoire.\n");
     }
 printf("----------------------------------------------------------------------------\n");
 printf("FONCTION char *ft_strchr(const char *str, int c)\n");
@@ -126,6 +126,11 @@ const char *str11 = "Comment?";
 
 	printf("Ma fonction pour l exemple 'Comment?' : %s\n", ft_strchr(str11, c9));
 	printf("La fonction strchr : %s\n", strchr(str11, c9));
+printf("----------------------------------------------------------------------------\n");
+printf("FONCTION char *ft_strtrim(const char *str, const char *set)\n");
+	char const	*a = "ppop  op o ppppppppo Je n aime pas trop la salade oppppppooopopopopppoop";
+	char const	*b = "ppop op o                  pppo";	
+printf (" Ma fonction : %s ", ft_strtrim(a, b));
 printf("----------------------------------------------------------------------------\n");
 printf("FONCTION char *ft_strrchr(const char *str, int c)\n");
     const char *str4 = "Comment?";
@@ -139,15 +144,15 @@ printf("FONCTION char *ft_substr(const char *s, unsigned int start, size_t len)\
 	printf("Avec l exemple 'Bonjour comment ca va?', 5, 8\n");
         printf("Ma fonction : %s\n", ft_substr(newstr2, 5, 8));
 printf("----------------------------------------------------------------------------\n");
-printf("FONCTION char *ft_strjoin(const char *s1, const char *s2))\n");
+printf("FONCTION char *ft_strjoin(const char *s1, const char *s2)\n");
 
-    const char *chaine1 = "Hello, ";
-    const char *chaine2 = "world!";
+    const char *chaine13 = "Hello,";
+    const char *chaine23 = "world!";
 
-    char *resultat = ft_strjoin(chaine1, chaine2);
-    printf("Résultat : %s\n", resultat);
+    char *resultat9 = ft_strjoin(chaine13, chaine23);
+    printf("Resultat : %s\n", resultat9);
 
-    free(resultat);
+    free(resultat9);
 
 printf("----------------------------------------------------------------------------\n");
 printf("FONCTION void ft_bzero(void *blocmem, size_t nb)\n");
@@ -214,13 +219,13 @@ printf("------------------------------------------------------------------------
 printf("FONCTION void	*ft_memmove(void *dest, const void *src, size_t len)\n");
     char source5[] = "Hello, world!";
     char destination[20];
-	char destination1[9];
+	char destination15[9];
     ft_memmove(destination, source5, sizeof(source5));
     printf("Ma fonction sans chevauchement: %s\n", destination);
-	printf("Ma fonction avec chevauchement: %s\n", destination1);
+	printf("Ma fonction avec chevauchement: %s\n", destination15);
 	memmove(destination, source5, sizeof(source5));
     printf("memmove sans chevauchement: %s\n", destination);
-	printf("memmove avec chevauchement: %s\n", destination1);
+	printf("memmove avec chevauchement: %s\n", destination15);
 printf("----------------------------------------------------------------------------\n");
 printf("FONCTION int ft_memcmp(const void *str1,	const void *str2, size_t nb)\n");
     char str7[] = "Hello";

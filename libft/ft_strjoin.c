@@ -46,7 +46,7 @@ int main()
     const char *chaine2 = "world!";
 
     char *resultat = ft_strjoin(chaine1, chaine2);
-    printf("Résultat de ma fonction : %s\n", resultat);
+    printf("Resultat de ma fonction : %s\n", resultat);
 
     free(resultat);
 
