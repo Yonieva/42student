@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 12:19:16 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/09 01:17:46 by yonieva          ###   ########.fr       */
+/*   Updated: 2023/10/17 17:36:41 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t destsize)
 	size_t	srcsize;
 	size_t	i;
 
-	if (dest == NULL || src == NULL)
+	if (!dest || !src)
 		return (0);
 	srcsize = ft_strlen(src);
 	i = 0;

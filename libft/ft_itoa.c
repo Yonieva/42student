@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 15:50:11 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/16 15:50:17 by yonieva          ###   ########.fr       */
+/*   Updated: 2023/10/17 16:23:40 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,6 @@ char	*ft_itoa(int nb)
 	{
 		result[0] = '-';
 	}
-	result[len] = '\0';
+	result[len + 1] = '\0';
 	return (result);
 }

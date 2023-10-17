@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 16:06:44 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/03 16:07:16 by yonieva          ###   ########.fr       */
+/*   Updated: 2023/10/17 18:24:01 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,32 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t len)
 {
-	size_t				i;
-	unsigned char		*bloc1;
-	const unsigned char	*bloc2;
+	size_t		i;
+	char		*bloc1;
+	char		*bloc2;
 
-	i = 0;
-	bloc1 = (unsigned char *)dest;
-	bloc2 = (unsigned char *)src;
+	bloc1 = (char *)dest;
+	bloc2 = (char *)src;
+	if (!dest && !src)
+		return (NULL);
+	if (len == 0)
+		return (dest);
 	if (bloc2 < bloc1)
 	{
-		while (i <= len)
+		i = len;
+		while (i > 0)
 		{
-			bloc1[len - i] = bloc2[len - i];
-			i++;
+			i--;
+			bloc1[i] = bloc2[i];
 		}
 	}
 	else
 	{
-		while (len > 0)
+		i = 0;
+		while (i > len)
 		{
 			bloc1[i] = bloc2[i];
 			i++;
-			len--;
 		}
 	}
 	return (dest);
