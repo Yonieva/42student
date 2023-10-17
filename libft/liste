@@ -8,8 +8,8 @@
 • bzero    ok
 • memcpy   ok
 • memmove  ok
-• strlcpy  ok / non teste / en tete stcpy non reconnu
-• strlcat  ok / non teste / en tete stcpy non reconnu
+• strlcpy  ok 
+• strlcat  ok 
 • toupper  ok
 • tolower  ok
 • strchr   ok
@@ -26,10 +26,10 @@
 ft_substr  ok
 ft_strjoin ok
 ft_strtrim ok
-ft_split
-ft_itoa
-ft_strmapi
-ft_strteri
+ft_split   ok
+ft_itoa    ok
+ft_strmapi ok            mais non teste
+ft_strteri ok            mais non teste
 ft_putchar_fd ok
 ft_putstr_fd  ok
 ft_putendl_fd ok
