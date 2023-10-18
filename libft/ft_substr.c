@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 00:33:21 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/10 00:53:36 by yonieva          ###   ########.fr       */
+/*   Updated: 2023/10/18 16:12:27 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,28 @@
 char	*ft_substr(const char *s, unsigned int start, size_t len)
 {
 	size_t	i;
-	size_t	j;
 	char	*s8;
 
-	s8 = (char *)malloc(sizeof(*s) * (len + 1));
-	if (!s8 || start > ft_strlen(s))
+	if (!s || start >= ft_strlen(s))
+	{
+		s8 = (char *)malloc(1);
+		if (s8)
+			s8[0] = '\0';
+		return (s8);
+	}
+	if (len > ft_strlen(s) - start)
+	{
+		len = ft_strlen(s) - start;
+	}
+	s8 = (char *)malloc(sizeof(char) * (len + 1));
+	if (!s8)
 		return (NULL);
 	i = 0;
-	j = 0;
-	while (s[i])
+	while (s[i] && i < len)
 	{
-		if (i >= start && j < len)
-		{
-			s8[j] = s[i];
-			j++;
-		}
+		s8[i] = s[start + i];
 		i++;
 	}
-	s8[j] = '\0';
+	s8[i] = '\0';
 	return (s8);
 }

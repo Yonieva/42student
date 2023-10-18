@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 14:18:14 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/05 14:18:21 by yonieva          ###   ########.fr       */
+/*   Updated: 2023/10/18 14:24:27 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,22 @@
 
 char	*ft_strrchr(const char *str, int c)
 {
-	int		i;
-	int		j;
-	char	*ptr;
+	size_t			str_len;
+	char			*ptr;
+	unsigned char	nb;
 
-	i = 0;
-	j = 0;
+	nb = (unsigned char)c;
+	str_len = ft_strlen(str);
 	ptr = (char *)str;
-	while (ptr[i] != '\0')
+	if (nb == '\0')
+		return (ptr + ft_strlen(str));
+	while (str_len > 0)
 	{
-		if (ptr[i] == c)
+		if ((unsigned char)ptr[str_len - 1] == nb)
 		{
-			j = i;
+			return (ptr + str_len - 1);
 		}
-		i++;
+		str_len--;
 	}
-	if (j != 0)
-	{
-		return (ptr + j);
-	}
-	else
-	{
-		return (NULL);
-	}
+	return (NULL);
 }

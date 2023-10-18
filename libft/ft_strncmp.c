@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 14:41:42 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/05 14:42:02 by yonieva          ###   ########.fr       */
+/*   Updated: 2023/10/18 15:13:40 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,13 @@ int	ft_strncmp(const char *str1, const char *str2, size_t nb)
 	{
 		return (0);
 	}
-	while (str1[i] && str2[i] && str1[i] == str2[i] && i < nb)
+	while (i < nb && str1[i] && str2[i] && str1[i] == str2[i])
 	{
 		i++;
 	}
-	return (str1[i] - str2[i]);
+	if (i < nb)
+	{
+		return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+	}
+	return (0);
 }

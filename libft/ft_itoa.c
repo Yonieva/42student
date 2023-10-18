@@ -34,27 +34,42 @@ static int	int_len(int nb)
 	return (count);
 }
 
+static char	*ft_malloc(int len)
+{
+	char	*str;
+
+	str = (char *)malloc(sizeof(char) * (len + 1));
+	if (!str)
+		return (NULL);
+	str[len] = '\0';
+	return (str);
+}
+
 char	*ft_itoa(int nb)
 {
 	int		len;
-	int		i;
 	char	*result;
 
 	len = int_len(nb);
-	i = len - 1;
-	result = (char *)malloc(sizeof(char) * len + 1);
+	if (nb == -2147483648)
+		return (ft_strdup("-2147483648"));
+	result = ft_malloc(len);
 	if (!result)
 		return (NULL);
-	while (nb != 0)
-	{
-		result[i] = ((nb % 10) + 48);
-		nb = nb / 10;
-		i--;
-	}
-	if (nb < 0)
+	if (nb < 0 && nb != -2147483648)
 	{
 		result[0] = '-';
+		nb = -nb;
 	}
-	result[len + 1] = '\0';
+	else if (nb == 0)
+	{
+		result[0] = '0';
+	}
+	while (nb > 0)
+	{
+		len--;
+		result[len] = (nb % 10) + 48;
+		nb = nb / 10;
+	}
 	return (result);
 }

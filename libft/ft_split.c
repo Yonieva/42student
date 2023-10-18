@@ -80,6 +80,16 @@ char	**ft_split(char const *str, char c)
 		if (str[i] != '\0' && str[i] != c)
 		{
 			arr[j] = mallocword(&str[i], c);
+			if (!arr[j])
+			{
+				while (j > 0)
+				{
+					j--;
+					free(arr[j]);
+				}
+				free(arr);
+				return (NULL);
+			}
 			j++;
 			while (str[i] != '\0' && str[i] != c)
 				i++;

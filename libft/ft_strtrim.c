@@ -19,8 +19,6 @@ char	*ft_strtrim(const char *str, const char *set)
 
 	start = 0;
 	end = 0;
-	if (str[start] == '\0' || set[start] == '\0')
-		return (NULL);
 	while (str[start] != '\0' && ft_strchr(set, str[start]))
 		start++;
 	end = ft_strlen(str) - 1;

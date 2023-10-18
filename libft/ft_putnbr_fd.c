@@ -25,12 +25,11 @@ void	ft_putnbr_fd(int nb, int fd)
 		nb = -nb;
 		ft_putnbr_fd(nb, fd);
 	}
-	if (nb == 0)
-		write(fd, "0", 1);
-	if (nb >= 10)
+	else if (nb >= 10)
 	{
 		ft_putnbr_fd(nb / 10, fd);
-		ft_putnbr_fd(nb % 10, fd);
+		digit = (nb % 10) + 48;
+		write (fd, &digit, 1);
 	}
 	else
 	{

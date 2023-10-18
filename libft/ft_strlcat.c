@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 15:55:15 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/16 17:17:42 by yonieva          ###   ########.fr       */
+/*   Updated: 2023/10/18 13:56:06 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,23 @@ size_t	ft_strlcat(char *dest, const char *src, size_t destsize)
 {
 	size_t	i;
 	size_t	j;
+	size_t	dest_len;
+	size_t	src_len;
 
-	if (destsize <= ft_strlen(dest))
-		return (destsize + ft_strlen(src));
-	i = ft_strlen(dest);
+	dest_len = ft_strlen(dest);
+	src_len = ft_strlen(src);
+	i = dest_len;
 	j = 0;
-	while (src[j] != '\0' && i + 1 < destsize)
+	if (destsize <= dest_len)
+		return (destsize + src_len);
+	while (src[j] != '\0' && i < destsize - 1)
 	{
 		dest[i] = src[j];
-		i++;
 		j++;
+		i++;
 	}
 	dest[i] = '\0';
-	return (ft_strlen(dest) + ft_strlen(src));
+	return (dest_len + src_len);
 }
 
 /*

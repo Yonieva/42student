@@ -20,27 +20,21 @@ void	*ft_memmove(void *dest, const void *src, size_t len)
 
 	bloc1 = (char *)dest;
 	bloc2 = (char *)src;
-	if (!dest && !src)
+	if (!bloc1 && !bloc2)
 		return (NULL);
-	if (len == 0)
-		return (dest);
 	if (bloc2 < bloc1)
 	{
-		i = len;
-		while (i > 0)
+		while (len > 0)
 		{
-			i--;
-			bloc1[i] = bloc2[i];
+			len--;
+			bloc1[len] = bloc2[len];
 		}
 	}
 	else
 	{
 		i = 0;
-		while (i > len)
-		{
-			bloc1[i] = bloc2[i];
-			i++;
-		}
+		while (i++ < len)
+			bloc1[i - 1] = bloc2[i - 1];
 	}
 	return (dest);
 }

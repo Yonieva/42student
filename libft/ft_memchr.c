@@ -19,8 +19,6 @@ void	*ft_memchr(const void *str, int c, size_t nb)
 
 	i = 0;
 	str1 = (void *)str;
-	if (str1[i] == '\0')
-		return (NULL);
 	while (i < nb)
 	{
 		if (str1[i] == (char) c)

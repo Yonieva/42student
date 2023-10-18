@@ -19,18 +19,12 @@ char	*ft_strchr(const char *str, int c)
 
 	i = 0;
 	str1 = (char *)str;
-	if (str1[i] == '\0')
-	{
-		return (NULL);
-	}
-	while (str1[i] != '\0')
+	while (str1[i] != '\0' || (char)c == '\0')
 	{
 		if (str1[i] == (char)c)
 			return (str1 + i);
 		i++;
 	}
-	if (c == '\0')
-		return (str1 + i);
 	return (NULL);
 }
 /*

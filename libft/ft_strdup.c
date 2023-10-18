@@ -15,23 +15,12 @@
 char	*ft_strdup(const char *src)
 {
 	char	*newstr;
-	char	*srcdup;
-	size_t	i;
-	size_t	j;
+	size_t	len;
 
-	i = ft_strlen(src + 1);
-	j = 0;
-	srcdup = (char *)src;
-	newstr = (char *)malloc(sizeof(char) * i);
-	if (newstr == NULL)
-	{
+	len = ft_strlen(src) + 1;
+	newstr = (char *)malloc(len * sizeof(char));
+	if (!newstr)
 		return (NULL);
-	}
-	while (srcdup[j] != '\0')
-	{
-		newstr[j] = srcdup[j];
-		j++;
-	}
-	newstr[j] = '\0';
+	ft_memcpy(newstr, src, len);
 	return (newstr);
 }
