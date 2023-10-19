@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
-#define LIBFT_H
+# define LIBFT_H
 
-#include <string.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
+# include <string.h>
+# include <unistd.h>
+# include <stdlib.h>
+# include <stdio.h>
 
 /*--------------------------------AFFICHAGE-----------------------------------*/
 void	ft_putchar_fd(char c, int fd);/*affiche char c sur sortie fd*/

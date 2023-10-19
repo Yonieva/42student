@@ -60,41 +60,45 @@ static char	*mallocword(const char *str, char c)
 	return (word);
 }
 
+static void	*ft_free(char **arr, int count)
+{
+	int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		free(arr[i]);
+		i++;
+	}
+	free(arr);
+	return (NULL);
+}
+
 char	**ft_split(char const *str, char c)
 {
 	char	**arr;
 	int		len;
 	int		i;
-	int		j;
 
 	len = countword(str, c);
 	arr = (char **)malloc(sizeof(char *) * (len + 1));
 	if (!arr)
 		return (NULL);
 	i = 0;
-	j = 0;
-	while (str[i] != '\0')
+	while (*str)
 	{
-		while (str[i] != '\0' && str[i] == c)
-			i++;
-		if (str[i] != '\0' && str[i] != c)
+		while (*str && *str == c)
+			str++;
+		if (*str && *str != c)
 		{
-			arr[j] = mallocword(&str[i], c);
-			if (!arr[j])
-			{
-				while (j > 0)
-				{
-					j--;
-					free(arr[j]);
-				}
-				free(arr);
-				return (NULL);
-			}
-			j++;
-			while (str[i] != '\0' && str[i] != c)
-				i++;
+			arr[i] = mallocword(str, c);
+			if (!arr[i])
+				return (ft_free(arr, i));
+			i++;
+			while (*str && *str != c)
+				str++;
 		}
 	}
-	arr[j] = NULL;
+	arr[i] = NULL;
 	return (arr);
 }
