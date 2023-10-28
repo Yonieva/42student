@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:58:11 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/15 21:38:35 by yonieva          ###   ########.fr       */
+/*   Updated: 2023/10/28 12:47:13 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 
 /*--------------------------------AFFICHAGE-----------------------------------*/
 void	ft_putchar_fd(char c, int fd);/*affiche char c sur sortie fd*/
@@ -49,7 +48,7 @@ char	**ft_split(char const *str, char c);/*fait un tableau de mot selon sep*/
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 /*applique la ft 'fd' sur chq char de la string 's' et rtrn new string*/
 void	ft_striteri(char *s, void (*f)(unsigned int, char*));
-/*aplique la ft 'fd' sur cha char de la string 's', ne return rien*/
+/*aplique la ft 'fd' sur chq char de la string 's', ne return rien*/
 /*----------------------------------------------------------------------------*/
 
 /*---------------------------GESTION DE LA MEMOIRE----------------------------*/
@@ -66,4 +65,16 @@ int		ft_memcmp(const void *str1, const void *str2, size_t nb);/*cmp 2 bloc*/
 int		ft_atoi(const char *str);/*Convert les char nbrs dans une str en int*/
 char	*ft_itoa(int nb);/*Convert int en char dans une nouvelle string*/
 /*----------------------------------------------------------------------------*/
+
+/*-----------------------------LISTE CHAINEES---------------------------------*/
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
+
+t_list	*ft_lstnew(void *content);/*init new node with content in value*/
+void	ft_lstadd_front(t_list **lst, t_list *new);/*add new node at begin*/
+int		ft_lstsize(t_list *lst);/*count nbrs of nodes in lst*/
+t_list	*ft_lstlast(t_list *lst);/*return the last node of lst*/
 #endif
