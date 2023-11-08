@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdarg.h> //va_
-#include <unistd.h>
-#include <stdio.h> //remove before push
-#include <stdlib.h>
+#include "ft_printf.h"
 
 int	print_char(int c)
 {
@@ -35,7 +32,7 @@ int	print_str(char *str)
 
 int	print_nbr(long n, int base)
 {
-	int count;
+	int		count;
 	char	*base16;
 
 	base16 = "0123456789abcdef";
@@ -53,6 +50,40 @@ int	print_nbr(long n, int base)
 	}
 }
 
+int	printxup(long n, int base)
+{
+	int		count;
+	char	*base16;
+
+	count = 0;
+	base16 = "0123456789ABCDEF";
+	if (n < 0)
+	{
+		print_char('-');
+		return (printxup(-n, base) + 1);
+	}
+	else if (n < base)
+		return (print_char(base16[n]));
+	else
+	{
+		count = count + printxup(n / base, base);
+		return (count + printxup(n % 16, base));
+	}
+}
+
+int	print_ptr(void *ptr)
+{
+	unsigned long	pt;
+	int				count;
+
+	pt = (unsigned long)ptr;
+	count = 0;
+	if (pt > 15)
+		count = count + print_ptr((void *)(pt / 16));
+	count = count + print_char("0123456789abcdef"[pt % 16]);
+	return (count);
+}
+
 int	print_format(char specifier, va_list args)
 {
 	int	count;
@@ -62,12 +93,21 @@ int	print_format(char specifier, va_list args)
 		count = count + print_char(va_arg(args, int));
 	else if (specifier == 's')
 		count = count + print_str(va_arg(args, char *));
-	else if (specifier == 'd')
+	else if (specifier == 'd' || specifier == 'i')
 		count = count + print_nbr((long)va_arg(args, int), 10);
+	else if (specifier == 'u')
+		count = count + print_nbr((long)va_arg(args, unsigned int), 10);
+	else if (specifier == 'p')
+	{
+		print_str("0x");
+		count = count + print_ptr(va_arg(args, void *)) + 2;
+	}
 	else if (specifier == 'x')
 		count = count + print_nbr((long)va_arg(args, unsigned int), 16);
+	else if (specifier == 'X')
+		count = count + printxup((long)va_arg(args, unsigned int), 16);
 	else
-		count = count + write(1, &specifier, 1);
+		count = count + print_char(specifier);
 	return (count);
 }
 
@@ -97,33 +137,39 @@ int	ft_printf(const char *format, ... )
 	return count;
 }
 
-
-
+/*
+#include <stdio.h>
 int	main()
 {
 	int testint;
 	int	test_neg_int;
 	int	testhexa;
+	int testhexaup;
 	char testchar;
 	char *teststr;
+	unsigned int	testu;
 	
 	testint = 142;
 	test_neg_int = -2147483648;
 	testhexa = 1968;
+	testhexaup = 1968;
 	testchar = 'c';
 	teststr = "Salut Bg !";
+	testu = 3435;
 
-	ft_printf("Voici un test de ma fonction avec un int : %d\n", testint);
-	printf("Voici un test de la vrai fonction avec un int : %d\n\n", testint);
-    ft_printf("Voici un test de ma fonction avec un int negatif : %d\n", test_neg_int);
-    printf("Voici un test de la vrai fonction avec un int negatif : %d\n\n", test_neg_int);
-    ft_printf("Voici un test de ma fonction avec un char : %c\n", testchar);
-    printf("Voici un test de la vrai fonction avec un char : %c\n\n", testchar);
-    ft_printf("Voici un test de ma fonction avec une string : %s\n", teststr);
-    printf("Voici un test de la vrai fonction avec une string : %s\n\n", teststr);
- 	ft_printf("Voici un test de ma fonction avec un hexa : %x\n", testhexa);
-    printf("Voici un test de la vrai fonction avec un hexa : %x\n\n", testhexa);
-
+	ft_printf("test de ma fonction avec un int : %d\n", testint);
+	printf("test de la vrai fonction avec un int : %d\n\n", testint);
+    ft_printf("test de ma fonction avec un int negatif : %d\n", test_neg_int);
+    printf("test de la vrai fonction avec un int negatif : %d\n\n", test_neg_int);
+    ft_printf("test de ma fonction avec un char : %c\n", testchar);
+    printf("test de la vrai fonction avec un char : %c\n\n", testchar);
+    ft_printf("test de ma fonction avec une string : %s\n", teststr);
+    printf("test de la vrai fonction avec une string : %s\n\n", teststr);
+ 	ft_printf("test de ma fonction avec un hexa : %x\n", testhexa);
+    printf("test de la vrai fonction avec un hexa : %x\n\n", testhexa);
+    ft_printf("test de ma fonction avec un hexa en upper: %X\n", testhexaup);
+    printf("test de la vrai fonction avec un hexa en upper : %X\n\n", testhexaup);
+    ft_printf("test de ma fonction avec un decimal non signe : %u\n", testu);
+    printf("test de la vrai fonction avec un decimal non signe : %u\n\n", testu);
 }
-
-
+*/
