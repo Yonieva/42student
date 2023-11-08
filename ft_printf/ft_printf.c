@@ -6,83 +6,11 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/02 22:24:12 by yonieva           #+#    #+#             */
-/*   Updated: 2023/11/06 14:59:08 by yonieva          ###   ########.fr       */
+/*   Updated: 2023/11/08 18:20:12 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	print_char(int c)
-{
-	return (write(1, &c, 1));
-}
-
-int	print_str(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i] != '\0')
-	{
-		print_char((int)str[i]);
-		i++;
-	}
-	return (i);
-}
-
-int	print_nbr(long n, int base)
-{
-	int		count;
-	char	*base16;
-
-	base16 = "0123456789abcdef";
-	if (n < 0)
-	{
-		print_char('-');
-		return (print_nbr(-n, base) + 1);
-	}
-	else if (n < base)
-		return (print_char(base16[n]));
-	else
-	{
-		count = print_nbr(n / base, base);
-		return (count + print_nbr(n % base, base));
-	}
-}
-
-int	printxup(long n, int base)
-{
-	int		count;
-	char	*base16;
-
-	count = 0;
-	base16 = "0123456789ABCDEF";
-	if (n < 0)
-	{
-		print_char('-');
-		return (printxup(-n, base) + 1);
-	}
-	else if (n < base)
-		return (print_char(base16[n]));
-	else
-	{
-		count = count + printxup(n / base, base);
-		return (count + printxup(n % 16, base));
-	}
-}
-
-int	print_ptr(void *ptr)
-{
-	unsigned long	pt;
-	int				count;
-
-	pt = (unsigned long)ptr;
-	count = 0;
-	if (pt > 15)
-		count = count + print_ptr((void *)(pt / 16));
-	count = count + print_char("0123456789abcdef"[pt % 16]);
-	return (count);
-}
 
 int	print_format(char specifier, va_list args)
 {
@@ -98,10 +26,7 @@ int	print_format(char specifier, va_list args)
 	else if (specifier == 'u')
 		count = count + print_nbr((long)va_arg(args, unsigned int), 10);
 	else if (specifier == 'p')
-	{
-		print_str("0x");
-		count = count + print_ptr(va_arg(args, void *)) + 2;
-	}
+		count = count + print_ptr(va_arg(args, void *));
 	else if (specifier == 'x')
 		count = count + print_nbr((long)va_arg(args, unsigned int), 16);
 	else if (specifier == 'X')
@@ -111,12 +36,12 @@ int	print_format(char specifier, va_list args)
 	return (count);
 }
 
-int	ft_printf(const char *format, ... )
+int	ft_printf(const char *format, ...)
 {
 	va_list	args;
 	int		i;
 	int		count;
-	
+
 	va_start(args, format);
 	i = 0;
 	count = 0;
@@ -134,7 +59,7 @@ int	ft_printf(const char *format, ... )
 		}
 	}
 	va_end(args);
-	return count;
+	return (count);
 }
 
 /*
@@ -159,17 +84,38 @@ int	main()
 
 	ft_printf("test de ma fonction avec un int : %d\n", testint);
 	printf("test de la vrai fonction avec un int : %d\n\n", testint);
-    ft_printf("test de ma fonction avec un int negatif : %d\n", test_neg_int);
-    printf("test de la vrai fonction avec un int negatif : %d\n\n", test_neg_int);
+    ft_printf("test de ma fonction avec un int neg : %d\n", test_neg_int);
+    printf("test de la vrai fonction avec un int neg : %d\n\n", test_neg_int);
     ft_printf("test de ma fonction avec un char : %c\n", testchar);
     printf("test de la vrai fonction avec un char : %c\n\n", testchar);
     ft_printf("test de ma fonction avec une string : %s\n", teststr);
     printf("test de la vrai fonction avec une string : %s\n\n", teststr);
  	ft_printf("test de ma fonction avec un hexa : %x\n", testhexa);
     printf("test de la vrai fonction avec un hexa : %x\n\n", testhexa);
-    ft_printf("test de ma fonction avec un hexa en upper: %X\n", testhexaup);
-    printf("test de la vrai fonction avec un hexa en upper : %X\n\n", testhexaup);
+    ft_printf("test de ma fonction avec un hexa  upper: %X\n", testhexaup);
+    printf("test de la vrai fonction avec un hexa upper : %X\n\n", testhexaup);
     ft_printf("test de ma fonction avec un decimal non signe : %u\n", testu);
-    printf("test de la vrai fonction avec un decimal non signe : %u\n\n", testu);
+    printf("test de la vrai ft avec un decimal non signe : %u\n\n", testu);
+    	int *ptr;
+	int n;
+	int count;
+	ptr = &n;
+	count = 0;
+	printf("--Real printf\n");
+	count += printf("%p\n", ptr);
+	printf("%d\n", count);
+	count = 0;
+	printf("--My printf\n");
+	count += ft_printf("%p\n", ptr);
+	printf("%d\n", count);
+	count = 0;
+	printf("|| Null case || \n--Real printf\n");
+	count += printf("%p\n", 0);
+	printf("%d\n", count);
+	count = 0;
+	printf("My printf\n");
+	count += ft_printf("%p\n", 0);
+	printf("%d\n", count);
+	count = 0;
 }
 */
