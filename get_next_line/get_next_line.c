@@ -6,9 +6,11 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/09 18:17:04 by yonieva           #+#    #+#             */
-/*   Updated: 2023/11/09 18:17:04 by yonieva          ###   ########.fr       */
+/*   Updated: 2023/11/10 19:38:46 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "get_next_line.h"
 
 char	*ft_read_save(int fd, char *save)
 {
@@ -28,12 +30,11 @@ char	*ft_read_save(int fd, char *save)
 			return (NULL);
 		}
 		buff[bytes] = '\0';
-		save = ft_stue
-	
-
-
-
-
+		save = ft_strjoin(save, buff);
+	}
+	free(buff);
+	return (save);
+}
 
 char	*get_next_line(int fd)
 {
@@ -45,7 +46,7 @@ char	*get_next_line(int fd)
 	save = ft_read_save(fd, save);
 	if (!save)
 		return (NULL);
-	line = ft_get_line(save);
+	line = ft_strdup(save);
 	save = ft_save(save);
 	return (line);
 }
