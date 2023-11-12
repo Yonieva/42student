@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 13:39:40 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/05 13:45:05 by yonieva          ###   ########.fr       */
+/*   Updated: 2023/11/12 15:39:39 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strchr(const char *str, int c)
 
 	i = 0;
 	str1 = (char *)str;
-	while (str1[i] != '\0' || (char)c == '\0')
+	while (str1[i] != '\0' && (char)c == '\0')
 	{
 		if (str1[i] == (char)c)
 			return (str1 + i);

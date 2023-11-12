@@ -12,12 +12,12 @@
 
 #include "get_next_line.h"
 
-char	ft_strchr(char *str, int c)
+char	*ft_strchr(char *str, int c)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0' || (char)c == '\0')
+	while (str[i] != '\0' && str[i] != (char)c)
 	{
 		if (str[i] == (char)c)
 			return (str + i);
@@ -36,10 +36,10 @@ size_t	ft_strlen(char	*str)
 	return (i);
 }
 
-char	*ft_strdup(char *save)
+char	*ft_strdup_line(char *save)
 {
 	int		i;
-	char	newstr;
+	char	*newstr;
 
 	i = 0;
 	if (!save)
@@ -75,7 +75,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	i = 0;
 	j = 0;
 	newstring = (char *)malloc(sizeof(char) * len);
-	if (newstring == NULL)
+	if (!newstring)
 		return (NULL);
 	while (s1[i] != '\0')
 	{
