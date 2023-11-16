@@ -17,19 +17,17 @@ char	*ft_read_save(int fd, char *save)
 	char	*buff;
 	int		bytes;
 
-	bytes = 1;
 	buff = (char *)malloc(sizeof(char) * (BUFFER_SIZE + 1));
-	if (!buff || !save)
-	{
-		free(buff);
+	if (!buff)\
 		return (NULL);
-	}
+	bytes = 1;
 	while (!ft_strchr(save, '\n') && bytes != 0)
 	{
 		bytes = read(fd, buff, BUFFER_SIZE);
 		if (bytes == -1)
 		{
 			free(buff);
+			free(save);
 			return (NULL);
 		}
 		buff[bytes] = '\0';
@@ -49,7 +47,7 @@ char	*ft_save(char *save)
 	j = 0;
 	while (save[i] != '\0' && save[i] != '\n')
 		i++;
-	if (!save)
+	if (!save[i])
 	{
 		free(save);
 		return (NULL);
@@ -74,16 +72,36 @@ char	*get_next_line(int fd)
 		return (NULL);
 	save = ft_read_save(fd, save);
 	if (!save)
-	{
-		free(save);
 		return (NULL);
-	}
 	line = ft_strdup_line(save);
-	if (!line)
-	{
-		free(save);
-		return(NULL);
-	}
 	save = ft_save(save);
 	return (line);
 }
+/*
+int main(void)
+{
+    int fd;
+    char *line;
+
+    // Open a file (replace "example.txt" with the actual file name)
+    fd = open("TESTGNL.txt", O_RDONLY);
+
+    if (fd < 0)
+    {
+        perror("Error opening file");
+        return 1;
+    }
+
+    // Read lines using get_next_line until the end of the file
+    while ((line = get_next_line(fd)) != NULL)
+    {
+        printf("Ligne lue : %s\n", line);
+        free(line);  // Free the allocated memory for each line
+    }
+
+    // Close the file descriptor
+    close(fd);
+
+    return 0;
+}
+*/

@@ -12,26 +12,32 @@
 
 #include "get_next_line.h"
 
-char	*ft_strchr(char *str, int c)
+char	*ft_strchr(char *save, int c)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0' && str[i] != (char)c)
+	if (!save)
+		return (NULL);
+	if (c == '\0')
+		return ((char *)&save[ft_strlen(save)]);
+	while (save[i] != '\0')
 	{
-		if (str[i] == (char)c)
-			return (str + i);
+		if (save[i] == (char)c)
+			return ((char *)&save[i]);
 		i++;
 	}
-	return (NULL);
+	return (0);
 }
 
-size_t	ft_strlen(char	*str)
+size_t	ft_strlen(char	*save)
 {
 	int	i;
 
 	i = 0;
-	while (str[i] != '\0')
+	if (!save)
+		return (0);
+	while (save[i] != '\0')
 		i++;
 	return (i);
 }
@@ -42,7 +48,7 @@ char	*ft_strdup_line(char *save)
 	char	*newstr;
 
 	i = 0;
-	if (!save)
+	if (!save[i])
 		return (NULL);
 	while (save[i] != '\0' && save[i] != '\n')
 		i++;
@@ -64,30 +70,29 @@ char	*ft_strdup_line(char *save)
 	return (newstr);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strjoin(char *save, char *buff)
 {
-	char	*newstring;
+	char	*new;
 	int		i;
 	int		j;
-	size_t	len;
 
-	len = (ft_strlen(s1) + ft_strlen(s2)) + 1;
-	i = 0;
-	j = 0;
-	newstring = (char *)malloc(sizeof(char) * len);
-	if (!newstring)
+	if (!save)
+	{
+		save = (char *)malloc(sizeof(char) * 1);
+		save[0] = '\0';
+	}
+	if (!save || !buff)
 		return (NULL);
-	while (s1[i] != '\0')
-	{
-		newstring[i] = s1[i];
-		i++;
-	}
-	while (s2[j] != '\0')
-	{
-		newstring[i] = s2[j];
-		j++;
-		i++;
-	}
-	newstring[i] = '\0';
-	return (newstring);
+	i = -1;
+	j = 0;
+	new = malloc(sizeof(char) * (ft_strlen(save) + ft_strlen(buff)) + 1);
+	if (!new)
+		return (NULL);
+	while (save[++i] != '\0')
+		new[i] = save[i];
+	while (buff[j] != '\0')
+		new[i++] = buff[j++];
+	new[i] = '\0';
+	free(save);
+	return (new);
 }

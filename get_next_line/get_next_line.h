@@ -19,13 +19,15 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
 
 char	*get_next_line(int fd);
 char	*ft_save(char *save);
 char	*ft_read_save(int fd, char *save);
-char	*ft_strchr(char *str, int c);
+char	*ft_strchr(char *save, int c);
 char	*ft_strdup_line(char *save);
-char	*ft_strjoin(char *s1, char *s2);
-size_t	ft_strlen(char *str);
+char	*ft_strjoin(char *save, char *buff);
+size_t	ft_strlen(char *save);
 
 #endif
