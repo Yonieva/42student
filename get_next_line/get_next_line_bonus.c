@@ -13,7 +13,6 @@
 #include "get_next_line.h"
 
 char	*ft_read_save(int fd, char *save)
-/*lire et sauvegarder selon buffer*/
 {
 	char	*buff;
 	int		bytes;
@@ -67,15 +66,15 @@ char	*ft_save(char *save)
 char	*get_next_line(int fd)
 {
 	char		*line;
-	static char	*save;
+	static char	*save[4096];
 
-	if (fd < 0 || BUFFER_SIZE <= 0)
+	if (fd < 0 || fd > 4095 || BUFFER_SIZE <= 0)
 		return (NULL);
-	save = ft_read_save(fd, save);
-	if (!save)
+	save[fd] = ft_read_save(fd, save[fd]);
+	if (!save[fd])
 		return (NULL);
-	line = ft_strdup_line(save);
-	save = ft_save(save);
+	line = ft_strdup_line(save[fd]);
+	save[fd] = ft_save(save[fd]);
 	return (line);
 }
 /*
