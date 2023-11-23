@@ -80,27 +80,42 @@ char	*get_next_line(int fd)
 /*
 int main(void)
 {
-    int fd;
+    int fd1, fd2, fd3;
     char *line;
 
-    // Open a file (replace "example.txt" with the actual file name)
-    fd = open("TESTGNL.txt", O_RDONLY);
+    // Open two files for reading
+    fd1 = open("1.txt", O_RDONLY);
+    fd2 = open("2.txt", O_RDONLY);
+	fd3 = open("3.txt", O_RDONLY);
 
-    if (fd < 0)
+    if (fd1 == -1 || fd2 == -1 || fd3 == -1)
     {
         perror("Error opening file");
         return 1;
     }
 
-    // Read lines using get_next_line until the end of the file
-    while ((line = get_next_line(fd)) != NULL)
+    while ((line = get_next_line(fd1)) != NULL)
     {
-        printf("Ligne lue : %s\n", line);
-        free(line);  // Free the allocated memory for each line
+        printf("File 1 Line: %s\n", line);
+        free(line);
     }
 
-    // Close the file descriptor
-    close(fd);
+    while ((line = get_next_line(fd2)) != NULL)
+    {
+        printf("File 2 Line: %s\n", line);
+        free(line);
+    }
+
+	while ((line = get_next_line(fd3)) != NULL)
+	{
+		printf("File 3 Line: %s\n", line);
+		free(line);
+	}
+
+    // Close the file descriptors
+    close(fd1);
+    close(fd2);
+	close(fd3);
 
     return 0;
 }

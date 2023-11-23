@@ -39,6 +39,7 @@ char	*ft_read_save(int fd, char *save)
 }
 
 char	*ft_save(char *save)
+/*save la ligne*/
 {
 	int		i;
 	int		j;
