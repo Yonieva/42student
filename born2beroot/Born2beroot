@@ -1,0 +1,73 @@
+pass : Born2beroot
+ouijeveuxduchocolat
+
+
+
+
+
+Part 1 - Downloading Your Virtual Machine
+Part 2 - Installing Your Virtual Machine
+Part 3 - Starting Your Virtual Machine
+Part 4 - Configurating Your Virtual Machine
+Part 5 - Connecting to SSH
+Part 6 - Continue Configurating Your Virtual Machine
+Part 7 - Signature.txt
+Part 8 - Your Born2BeRoot Defence Evaluation with Answers
+
+
+
+
+Pourquoi ai-je choisi Debian ?
+Plus facile à installer et à configurer, donc meilleur pour les serveurs personnels.
+
+
+
+Différence entre Debian et CentOS ?
+Debian est beaucoup plus facile à mettre à jour que CentOS lorsqu'une nouvelle version est publiée. Debian est plus conviviale et prend en charge de nombreuses bibliothèques, systèmes de fichiers et architectures. Il propose également plus d’options de personnalisation. Si vous êtes une grande entreprise, CentOS offre davantage de fonctionnalités Enterprise et une excellente prise en charge du logiciel Enterprise.
+
+
+
+Qu'est-ce qu'une machine virtuelle ?
+Est une ressource qui utilise un logiciel au lieu d’un ordinateur physique pour exécuter des programmes ou des applications. Chaque VM possède son propre système d'exploitation et fonctionne séparément, vous pouvez donc avoir plus d'une VM par machine. Peut être utilisé pour tester des applications dans un environnement sûr et séparé. Fonctionne en utilisant un logiciel pour simuler du matériel virtuel et s'exécute sur une machine hôte.
+
+
+
+Quelle est la différence entre aptitude et APT (Advanced Packaging Tool) ?
+Aptitude est un gestionnaire de packages de haut niveau tandis qu'APT est un niveau inférieur qui peut être utilisé par d'autres gestionnaires de packages de niveau supérieur.
+Aptitude est plus intelligent et supprimera automatiquement les packages inutilisés ou suggérera l'installation de packages dépendants
+Apt ne fera explicitement que ce qui lui est demandé de faire dans la ligne de commande
+
+
+Qu’est-ce qu’AppArmor ?
+Système de sécurité Linux qui fournit la sécurité du contrôle d'accès obligatoire (MAC). Permet à l'administrateur système de restreindre les actions que les processus peuvent effectuer. Il est inclus par défaut avec Debian. Exécutez aa-status pour vérifier s'il est en cours d'exécution.
+
+
+
+
+Règles de mot de passe
+Pour les règles de mot de passe, nous utilisons la bibliothèque de vérification de la qualité des mots de passe et il existe deux fichiers : le fichier de mot de passe commun qui définit les règles telles que les caractères majuscules et minuscules, les caractères en double, etc. et le fichier login.defs qui stocke les règles d'expiration des mots de passe (30 jours, etc.). sudo nano /etc/login.defs sudo nano /etc/pam.d/common-password
+
+
+
+Qu'est-ce que LVM
+Logical Volume Manager – nous permet de manipuler facilement les partitions ou le volume logique sur un périphérique de stockage.
+
+
+
+UFW (pare-feu simple)
+UFW est une interface pour modifier le pare-feu de l'appareil sans compromettre la sécurité. Vous l'utilisez pour configurer les ports auxquels autoriser les connexions et les ports à fermer. Ceci est utile en conjonction avec SSH, vous pouvez définir un port spécifique avec lequel fonctionner.
+
+
+
+Qu’est-ce que SSH ?
+SSH ou Secure Shell est un mécanisme d'authentification entre un client et un hôte. Il utilise des techniques de cryptage afin que toutes les communications entre les clients et les hôtes se fassent sous forme cryptée. Les utilisateurs sous Mac ou Linux peuvent utiliser SSH le terminal pour travailler sur leur serveur via SSH.
+
+
+
+Qu’est-ce que Cron ?
+Cron ou cron job est un utilitaire de ligne de commande permettant de planifier des commandes ou des scripts à des intervalles spécifiques ou à une heure précise chaque jour. Utile si vous souhaitez configurer votre serveur pour qu'il redémarre à une heure précise chaque jour.
+.cd /usr/local/bin – pour afficher monitoring.sh
+.sudo crontab -u root -e – pour modifier la tâche cron
+.changez le script en */1 * * * * sleep 30s && script path – pour l'exécuter toutes les 30 secondes, supprimez la ligne pour arrêter l'exécution du travail.
+
+
