@@ -43,9 +43,6 @@ BSOURCES =	ft_lstnew.c\
 OBJ = $(SRC:.c=.o)
 BOBJECTS = $(BSOURCES:.c=.o)
 
-FT_PRINTF_DIR = ft_printf
-FT_PRINT = $(FT_PRINTF_DIR)/libftprintf.a
-
 CC = cc  
 CFLAGS = -Wall -Wextra -Werror
 
@@ -56,8 +53,7 @@ all : $(NAME)
 
 
 $(NAME): $(OBJ)
-	make -C $(FT_PRINTF_DIR)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJ) $(FT_PRINT) 
+	 $(AR) $(ARFLAGS) $(NAME) $(OBJ) 
 
 bonus: $(OBJ) $(BOBJECTS)
 	$(AR) -r $(NAME) $?
@@ -67,7 +63,6 @@ bonus: $(OBJ) $(BOBJECTS)
 
 clean:
 	rm -f $(OBJ) $(BOBJECTS)
-	make -C $(FT_PRINTF_DIR) clean
 
 fclean: clean
 	rm -f $(NAME)

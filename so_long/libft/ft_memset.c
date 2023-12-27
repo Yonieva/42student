@@ -1,41 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 13:39:40 by yonieva           #+#    #+#             */
-/*   Updated: 2023/11/14 14:50:40 by yonieva          ###   ########.fr       */
+/*   Created: 2023/09/25 23:44:35 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/02 16:37:22 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+void	*ft_memset(void *blocmem, int c, size_t len)
 {
-	int		i;
-	char	*str1;
+	size_t			i;
+	unsigned char	*struc;
 
+	struc = (unsigned char *)blocmem;
 	i = 0;
-	str1 = (char *)str;
-	while (str1[i] != '\0' || (char)c == '\0')
+	while (i < len)
 	{
-		if (str1[i] == (char)c)
-			return (str1 + i);
+		struc[i] = (unsigned char)c;
 		i++;
 	}
-	return (NULL);
+	return (blocmem);
 }
-/*
-#include <string.h>
-#include <stdio.h>
-int	main ()
-{
-	const char *str = "Comment?";
-	int	c = 'm';
-
-	printf("Ma fonction pour l exemple 'Comment?' : %s\n", ft_strchr(str, c));
-	printf("La fonction strchr : %s\n", strchr(str, c));
-}
-*/

@@ -1,41 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 13:39:40 by yonieva           #+#    #+#             */
-/*   Updated: 2023/11/14 14:50:40 by yonieva          ###   ########.fr       */
+/*   Created: 2023/10/05 14:18:14 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/18 14:24:27 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strrchr(const char *str, int c)
 {
-	int		i;
-	char	*str1;
+	size_t			str_len;
+	char			*ptr;
+	unsigned char	nb;
 
-	i = 0;
-	str1 = (char *)str;
-	while (str1[i] != '\0' || (char)c == '\0')
+	nb = (unsigned char)c;
+	str_len = ft_strlen(str);
+	ptr = (char *)str;
+	if (nb == '\0')
+		return (ptr + ft_strlen(str));
+	while (str_len > 0)
 	{
-		if (str1[i] == (char)c)
-			return (str1 + i);
-		i++;
+		if ((unsigned char)ptr[str_len - 1] == nb)
+		{
+			return (ptr + str_len - 1);
+		}
+		str_len--;
 	}
 	return (NULL);
 }
-/*
-#include <string.h>
-#include <stdio.h>
-int	main ()
-{
-	const char *str = "Comment?";
-	int	c = 'm';
-
-	printf("Ma fonction pour l exemple 'Comment?' : %s\n", ft_strchr(str, c));
-	printf("La fonction strchr : %s\n", strchr(str, c));
-}
-*/

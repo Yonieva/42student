@@ -1,41 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/05 13:39:40 by yonieva           #+#    #+#             */
-/*   Updated: 2023/11/14 14:50:40 by yonieva          ###   ########.fr       */
+/*   Created: 2023/09/24 15:27:17 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/09 01:12:11 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *str, int c)
+int	ft_atoi(const char *str)
 {
-	int		i;
-	char	*str1;
+	int	i;
+	int	result;
+	int	sign;
 
 	i = 0;
-	str1 = (char *)str;
-	while (str1[i] != '\0' || (char)c == '\0')
+	result = 0;
+	sign = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 	{
-		if (str1[i] == (char)c)
-			return (str1 + i);
 		i++;
 	}
-	return (NULL);
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
+	{
+		result = result * 10 + str[i] - 48;
+		i++;
+	}
+	return (result * sign);
 }
-/*
-#include <string.h>
-#include <stdio.h>
-int	main ()
-{
-	const char *str = "Comment?";
-	int	c = 'm';
-
-	printf("Ma fonction pour l exemple 'Comment?' : %s\n", ft_strchr(str, c));
-	printf("La fonction strchr : %s\n", strchr(str, c));
-}
-*/
