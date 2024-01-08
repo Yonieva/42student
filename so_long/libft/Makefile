@@ -33,7 +33,12 @@ SRC =	ft_isalpha.c\
 	ft_putchar_fd.c\
 	ft_putstr_fd.c\
 	ft_putendl_fd.c\
-	ft_putnbr_fd.c
+	ft_putnbr_fd.c\
+	get_next_line.c\
+	get_next_line_utils.c\
+	ft_printf.c\
+	add_ft.c
+
 
 BSOURCES =	ft_lstnew.c\
 		ft_lstadd_front.c\
@@ -43,7 +48,7 @@ BSOURCES =	ft_lstnew.c\
 OBJ = $(SRC:.c=.o)
 BOBJECTS = $(BSOURCES:.c=.o)
 
-CC = cc  
+CC = gcc  
 CFLAGS = -Wall -Wextra -Werror
 
 AR = ar
@@ -53,7 +58,7 @@ all : $(NAME)
 
 
 $(NAME): $(OBJ)
-	 $(AR) $(ARFLAGS) $(NAME) $(OBJ) 
+	$(AR) $(ARFLAGS) $(NAME) $(OBJ) 
 
 bonus: $(OBJ) $(BOBJECTS)
 	$(AR) -r $(NAME) $?
@@ -63,6 +68,7 @@ bonus: $(OBJ) $(BOBJECTS)
 
 clean:
 	rm -f $(OBJ) $(BOBJECTS)
+
 
 fclean: clean
 	rm -f $(NAME)

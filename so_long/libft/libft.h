@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:58:11 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/28 12:47:13 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/01/08 16:43:09 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdio.h>
+# include <fcntl.h>
+# include <stdarg.h>
 
 /*--------------------------------AFFICHAGE-----------------------------------*/
 void	ft_putchar_fd(char c, int fd);/*affiche char c sur sortie fd*/
@@ -23,6 +26,30 @@ void	ft_putstr_fd(char *str, int fd);/*affcihe str sur sortie fd*/
 void	ft_putendl_fd(char*str, int fd);/*affiche str + '\n' sur sortie fd*/
 void	ft_putnbr_fd(int nb, int fd);/*affiche tous les int possible sur fd*/
 /*----------------------------------------------------------------------------*/
+
+/*--------------------------------FT_PRINTF-----------------------------------*/
+int	print_char(int c);
+int	print_str(char *str);
+int	print_nbr(long n, int base);
+int	printxup(long n, int base);
+int	print_ptr(void *ptr);
+int	print_format(char specifier, va_list args);
+int	ft_printf(const char *format, ...);
+/*----------------------------------------------------------------------------*/
+
+/*-----------------------------GET NEXT LINE---------------------------------*/
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42 
+# endif
+
+char	*get_next_line(int fd);
+char	*ft_save(char *save);
+char	*ft_read_save(int fd, char *save);
+char	*ft_strchrr(char *save, int c);
+char	*ft_strdup_line(char *save);
+char	*ft_strjoinn(char *save, char *buff);
+size_t	ft_strlenn(char *save);
+/*---------------------------------------------------------------------------*/
 
 /*----------------TRAITEMENT CARACTERES ET CHAINE DE CARACTERES---------------*/
 size_t	ft_strlen(const char *str);/*Retourne nb char d une string*/
@@ -66,15 +93,38 @@ int		ft_atoi(const char *str);/*Convert les char nbrs dans une str en int*/
 char	*ft_itoa(int nb);/*Convert int en char dans une nouvelle string*/
 /*----------------------------------------------------------------------------*/
 
-/*-----------------------------LISTE CHAINEES---------------------------------*/
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}					t_list;
 
-t_list	*ft_lstnew(void *content);/*init new node with content in value*/
-void	ft_lstadd_front(t_list **lst, t_list *new);/*add new node at begin*/
-int		ft_lstsize(t_list *lst);/*count nbrs of nodes in lst*/
-t_list	*ft_lstlast(t_list *lst);/*return the last node of lst*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #endif
