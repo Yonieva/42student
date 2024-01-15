@@ -25,7 +25,7 @@ UP = "\033[A"
 CUT = "\033[K"
 
 CFILES = \
-		test.c\
+		so_long.c\
 		
 		
 

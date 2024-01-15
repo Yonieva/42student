@@ -11,16 +11,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "mlx/mlx.h"
 
-
- 
-
-
-
-
-/*GESTIONNAIRE DESTRUCTION FENETRE ET ENREGISTREMENTS DES TOUCHES RELACHEES*/ 
-/*---------------------------------------------------------------------------*/ 
 int on_destroy(t_data *data)
 {
 	mlx_destroy_window(data->mlx_ptr, data->win_ptr);
@@ -29,7 +20,6 @@ int on_destroy(t_data *data)
 	exit(0);
 	return (0);
 }
-
  
 int on_keypress(int keysym, t_data *data)
 {
@@ -37,9 +27,6 @@ int on_keypress(int keysym, t_data *data)
 	printf("Pressed key: %d\\n", keysym);
 	return (0);
 }
-/*----------------------------------------------------------------------------*/
-
-
  
 int main(void)
 {
@@ -48,18 +35,17 @@ int main(void)
 	data.mlx_ptr = mlx_init();
 	if (!data.mlx_ptr)
 		return (1);
-
-	data.win_ptr = mlx_new_window(data.mlx_ptr, 600, 400, "hi :)");
+	data.win_ptr = mlx_new_window(data.mlx_ptr, 1080, 800, "METAL GEAR 42");
 	if (!data.win_ptr)
 		return (free(data.mlx_ptr), 1);
  
-	/*Enregistrer le gestionnaire de libération de touche*/
+	// Enregistre touches relachees
 	mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
  
-	/*Enregistrer le gestionnaire de destroy*/
+	// Enregistre les destructions
 	mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
  
-	/*Boucler sur le pointeur MLX*/
+	// Boucle sur le pointeur MLX
 	mlx_loop(data.mlx_ptr);
 	return (0);
 }
