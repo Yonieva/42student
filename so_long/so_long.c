@@ -40,13 +40,13 @@ int main(void)
     if (!data.mlx_ptr)
         return (1);
 
-    data.win_ptr = mlx_new_window(data.mlx_ptr, 1080, 800, "METAL GEAR 42");
+    data.win_ptr = mlx_new_window(data.mlx_ptr, 1920, 1080, "METAL GEAR 42");
     if (!data.win_ptr)
         return (free(data.mlx_ptr), 1);
 
     // Chargement de l'image
     void *img;
-    char *relative_path = "./assets/map.xpm";
+    char *relative_path = "./assets/texture_map/sol.xpm";
     int img_width;
     int img_height;
 
