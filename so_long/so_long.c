@@ -13,57 +13,83 @@
 #include "so_long.h"
 
 
-int on_destroy(t_data *data)
+/****************************************************************************/
+/* message + sortie du jeu */
+int	ft_exit(t_data *data)
 {
-    mlx_destroy_window(data->mlx_ptr, data->win_ptr);
-    mlx_destroy_display(data->mlx_ptr);
-    free(data->mlx_ptr);
-    exit(0);
-    return (0);
+	mlx_destroy_window(data->mlx, data->win);
+	ft_printf("Snake ? Snake ?? Snaaaaaaaaaaaaaakkkke !! :(\n");
+	ft_printf("GAME OVER\n");
+	exit(EXIT_SUCCESS);
 }
+/****************************************************************************/
 
-int on_keypress(int keysym, t_data *data)
+
+
+
+
+/****************************************************************************/
+/* affiche la carte + enregistre donnees clavier-souris */
+static int	ft_render_next_frame(t_data *data)
 {
-    (void)data;
-    printf("Pressed key: %d\n", keysym);
-    return (0);
+	ft_put_background(data);
+	ft_create_map(data);
+	mlx_hook(data->win, 17, 1L << 2, ft_exit, data);
+	mlx_key_hook(data->win, ft_key_hook, data);
+	return (0);
 }
+/****************************************************************************/
 
 
 
 
-int main(void)
+/****************************************************************************/
+/* LANCEMENT DU PROGRAMME */
+int	main(int argc, char **argv)
 {
- t_data data;
+    /*Initialisation des Structures*/
+	t_data	data;
+	t_map	map;
 
-    data.mlx_ptr = mlx_init();
-    if (!data.mlx_ptr)
-        return (1);
 
-    data.win_ptr = mlx_new_window(data.mlx_ptr, 1920, 1080, "METAL GEAR 42");
-    if (!data.win_ptr)
-        return (free(data.mlx_ptr), 1);
+    /*détermine la taille de la fenêtre selon les arguments argv*/
+	ft_window_size(&data, argv);
 
-    // Chargement de l'image
-    void *img;
-    char *relative_path = "./assets/texture_map/sol.xpm";
-    int img_width;
-    int img_height;
+    /*allocation de la mémoire pour la Carte*/
+	map.map = ft_calloc(data.size_y + 1, sizeof(char *));
+	if (!map.map)
+	{
+		perror("Error\ncalloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 
-    img = mlx_xpm_file_to_image(data.mlx_ptr, relative_path, &img_width, &img_height);
-    if (!img)
-        return (free(data.mlx_ptr), 1);
 
-    // Affichage de l'image
-    mlx_put_image_to_window(data.mlx_ptr, data.win_ptr, img, 0, 0);
+    /*initialiser la structure de données*/
+	ft_init(&data, &map);
+    /*analyser les données de la carte*/
+	ft_parse_input(&data, argv, argc);
 
-    // Enregistre touches relâchées
-    mlx_hook(data.win_ptr, KeyRelease, KeyReleaseMask, &on_keypress, &data);
 
-    // Enregistre les destructions
-    mlx_hook(data.win_ptr, DestroyNotify, StructureNotifyMask, &on_destroy, &data);
 
-    // Boucle sur le pointeur MLX
-    mlx_loop(data.mlx_ptr);
-    return (0);
+    /*initialisation de MiniLibX*/
+	data.mlx = mlx_init();
+	if (!data.mlx)
+	{
+		perror("Error\nprogramm init failed\n");
+		exit(EXIT_FAILURE);
+	}
+
+
+    /*création de la Fenêtre*/
+	data.win = mlx_new_window(data.mlx, data.size_x,
+			data.size_y, "./so_long");
+
+    /*rendu première frame*/
+	ft_render_next_frame(&data);
+
+    /*boucle Principale + message si erreur et sortie*/
+	mlx_loop(data.mlx);
+	perror("Error\nloop failed\n");
+	exit(EXIT_FAILURE);
 }
+/****************************************************************************/
