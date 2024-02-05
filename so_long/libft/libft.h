@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:58:11 by yonieva           #+#    #+#             */
-/*   Updated: 2024/01/08 16:43:09 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/02/05 21:10:47 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <fcntl.h>
 # include <stdarg.h>
+
 
 /*--------------------------------AFFICHAGE-----------------------------------*/
 void	ft_putchar_fd(char c, int fd);/*affiche char c sur sortie fd*/
@@ -38,8 +39,9 @@ int	ft_printf(const char *format, ...);
 /*----------------------------------------------------------------------------*/
 
 /*-----------------------------GET NEXT LINE---------------------------------*/
+
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42 
+#  define BUFFER_SIZE 1024
 # endif
 
 char	*get_next_line(int fd);
@@ -48,8 +50,9 @@ char	*ft_read_save(int fd, char *save);
 char	*ft_strchrr(char *save, int c);
 char	*ft_strdup_line(char *save);
 char	*ft_strjoinn(char *save, char *buff);
-size_t	ft_strlenn(char *save);
+
 /*---------------------------------------------------------------------------*/
+
 
 /*----------------TRAITEMENT CARACTERES ET CHAINE DE CARACTERES---------------*/
 size_t	ft_strlen(const char *str);/*Retourne nb char d une string*/
@@ -67,7 +70,7 @@ char	*ft_strdup(const char *src);/*dup newstring avec malloc*/
 char	*ft_strchr(const char *str, int c);/*Pointe 'c' ds str,return suite*/
 char	*ft_strrchr(const char *str, int c);/*Pointe derniere occ de c ds str*/
 char	*ft_substr(const char *s, unsigned int start, size_t len);/*dup substr*/
-char	*ft_strjoin(const char *s1, const char *s2);/*cat s1+s2 ds un newstr*/
+char	*ft_strjoin(char *s1, const char *s2);/*cat s1+s2 ds un newstr*/
 char	*ft_strtrim(char const *str, const char *set);/*sup dbt et fin set/str*/
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 /*recherche needle dans haystack len fois et retourne a partir de needle*/

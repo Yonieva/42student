@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
+
 #include "libft.h"
 
 char	*ft_strchrr(char *save, int c)
@@ -30,17 +32,7 @@ char	*ft_strchrr(char *save, int c)
 	return (0);
 }
 
-size_t	ft_strlenn(char	*save)
-{
-	int	i;
 
-	i = 0;
-	if (!save)
-		return (0);
-	while (save[i] != '\0')
-		i++;
-	return (i);
-}
 
 char	*ft_strdup_line(char *save)
 {

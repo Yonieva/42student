@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/05 15:37:28 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/10 00:52:34 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/02/04 18:06:27 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,20 +19,20 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	size_t	j;
 
 	i = 0;
-	if (!*needle)
+	if (ft_strlen(needle) == 0)
 		return ((char *)haystack);
+	if (len == 0)
+		return (NULL);
 	while (haystack[i] != '\0' && i < len)
 	{
 		j = 0;
-		while (haystack[i + j] && needle[j]
-			&& i + j < len && haystack[i + j] == needle[j])
+		while (needle[j] == haystack[i + j] && i + j < len)
 		{
+			if (needle[j + 1] == '\0')
+				return ((char *)haystack + i);
 			j++;
 		}
-		if (needle[j] == '\0')
-			return ((char *)haystack + i);
 		i++;
-		j = 0;
 	}
 	return (NULL);
 }

@@ -3,41 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonieva <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 13:17:53 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/11 14:18:58 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/02/04 20:19:13 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strjoin(const char *s1, const char *s2)
+char	*ft_strjoin(char *s1, const char *s2)
 {
-	char			*newstring;
-	int				i;
-	int				j;
-	size_t			len;
+	char	*c;
+	int		i;
+	int		i2;
 
-	len = (ft_strlen(s1) + ft_strlen(s2)) + 1;
-	i = 0;
-	j = 0;
-	newstring = (char *)malloc(sizeof(char) * len);
-	if (newstring == NULL)
+	if (!s2)
 		return (NULL);
-	while (s1[i] != '\0')
+	i = 0;
+	i2 = 0;
+	c = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
+	if (c == NULL)
+		return (NULL);
+	while (s1 && s1[i] != '\0')
 	{
-		newstring[i] = s1[i];
+		c[i] = s1[i];
 		i++;
 	}
-	while (s2[j] != '\0')
-	{
-		newstring[i] = s2[j];
-		j++;
-		i++;
-	}
-	newstring[i] = '\0';
-	return (newstring);
+	while (s2[i2] != '\0')
+		c[i++] = s2[i2++];
+	c[i] = '\0';
+	free(s1);
+	s1 = NULL;
+	return (c);
 }
 /*
 int main()

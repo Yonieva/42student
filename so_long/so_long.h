@@ -13,37 +13,27 @@
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-
-
-
-/****************************************************************************/
 /* ********** Pour system Linux ********** */
 #ifdef __linux__
 # include <X11/keysym.h>
 # include <X11/X.h>
-/****************************************************************************/
-
-
-
-/****************************************************************************/
 /* ********** Pour system MacOS ********** */
 #elif __APPLE__
 # include <ApplicationServices/ApplicationServices.h>
 #endif
-/****************************************************************************/
 
 
-
-
-# include "mlx/mlx.h"
-# include <stdlib.h>
-# include <stdio.h>
-# include "libft/libft.h"
-
-
+/* ********** Inclusions des bibliotheques ********** */
+#include "mlx/mlx.h"
+#include "libft/libft.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <fcntl.h>
 
 /****************************************************************************/
-/* ********** definitions ********** */
+
+
+/* ********** definitions taille ecran + touches pour clavier mac ********** */
 
 # define IMG_W 32
 # define IMG_H 32
@@ -57,8 +47,6 @@
 # define LEFT -1
 # define RIGHT 1
 /****************************************************************************/
-
-
 
 
 /****************************************************************************/
@@ -75,8 +63,6 @@ typedef struct s_img
 
 
 
-
-
 /****************************************************************************/
 /* ***** stock map, pointeur vers objet, coord du joueur + comptr obj ***** */
 typedef struct s_map
@@ -85,11 +71,9 @@ typedef struct s_map
 	void	*object;
 	int		x;
 	int		y;
-	int		carte;
+	int		card;
 }				t_map;
 /****************************************************************************/
-
-
 
 
 
@@ -111,26 +95,41 @@ typedef struct s_data
 /****************************************************************************/
 
 
-
-
 /****************************************************************************/
-/* ********** Fonctions ********** */
-
+/* ********** Taille fenetre + enregistrement des hooks ********** */
 void	ft_window_size(t_data *data, char **argv);
 int		ft_key_hook(int keycode, t_data *data);
+int		ft_mouse_hook(int mousecode, t_data *data);
+void	ft_move(t_data *data, char position, int direction);
+int		ft_key_hook(int keycode, t_data *data);
+
+/* ********** La Map ********** */
 void	ft_create_map(t_data *data);
+int		ft_count_lines(int fd, int x, int img_w); 
+int		ft_line_length(int fd);
+int		ft_count_item(char *s, char c);
 void	ft_put_object(t_data *data, char *relative_path);
 void	ft_put_player(t_data *data);
 void	ft_parse_input(t_data *data, char **argv, int argc);
 void	ft_put_background(t_data *data);
-void	ft_win(t_data *data);
-int		ft_mouse_hook(int mousecode, t_data *data);
-void	ft_move(t_data *data, char position, int direction);
-int		ft_exit(t_data *data);
 void	ft_init(t_data *data, t_map *map);
+int 	ft_render_next_frame(t_data *data);    
+
+/* ********** Personnage ********** */
+void	ft_player_move(t_data *data, char position, int direction);
+void	ft_collect(t_data *data, char pos, int dir);
+void	ft_move(t_data *data, char pos, int dir);
+
+/* ********** Verifs ********** */
+void	ft_map_error(char *error_msg);
+void	ft_check_borders(t_data *data);
+void	ft_check_content(t_data *data);
+void	ft_input_error(int	argc);
+
+/* ********** Sortie victoire + sortie erreur ********** */
+void	ft_win(t_data *data);
+int		ft_exit(t_data *data);
 /****************************************************************************/
-
-
 
 
 #endif

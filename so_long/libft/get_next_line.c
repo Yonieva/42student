@@ -10,10 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "libft.h"
 
 char	*ft_read_save(int fd, char *save)
-/*lire et sauvegarder selon buffer*/
+
 {
 	char	*buff;
 	int		bytes;
@@ -22,7 +23,7 @@ char	*ft_read_save(int fd, char *save)
 	if (!buff)
 		return (NULL);
 	bytes = 1;
-	while (!ft_strchr(save, '\n') && bytes != 0)
+	while (!ft_strchrr(save, '\n') && bytes != 0)
 	{
 		bytes = read(fd, buff, BUFFER_SIZE);
 		if (bytes == -1)
@@ -32,14 +33,14 @@ char	*ft_read_save(int fd, char *save)
 			return (NULL);
 		}
 		buff[bytes] = '\0';
-		save = ft_strjoin(save, buff);
+		save = ft_strjoinn(save, buff);
 	}
 	free(buff);
 	return (save);
 }
 
 char	*ft_save(char *save)
-/*save la ligne*/
+
 {
 	int		i;
 	int		j;
@@ -75,35 +76,18 @@ char	*get_next_line(int fd)
 	save = ft_read_save(fd, save);
 	if (!save)
 		return (NULL);
+
+	char *newline_pos = ft_strchrr(save, '\n');
+
+    if (newline_pos == NULL)
+	{
+    	return (NULL);
+	}
+
 	line = ft_strdup_line(save);
 	save = ft_save(save);
 	return (line);
 }
-/*
-int main(void)
-{
-    int fd;
-    char *line;
 
-    // Open a file (replace "example.txt" with the actual file name)
-    fd = open("TESTGNL.txt", O_RDONLY);
 
-    if (fd < 0)
-    {
-        perror("Error opening file");
-        return 1;
-    }
 
-    // Read lines using get_next_line until the end of the file
-    while ((line = get_next_line(fd)) != NULL)
-    {
-        printf("Ligne lue : %s\n", line);
-        free(line);  // Free the allocated memory for each line
-    }
-
-    // Close the file descriptor
-    close(fd);
-
-    return 0;
-}
-*/

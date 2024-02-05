@@ -17,19 +17,30 @@ void	ft_window_size(t_data *data, char **argv)
 {
 	int	fd;
 
+	if (argv[1] == NULL)
+	{
+    	ft_printf("Erreur : Nom de fichier NULL\n");
+    	exit(EXIT_FAILURE);
+	}
+
+	ft_printf("Ouverture du fichier : %s\n", argv[1]);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 	{
-		perror("Erreur\nExemple : './so_long map/map1.ber'\n");
+		ft_printf("Erreur\nExemple : './so_long map/map1.ber'\n");
 		exit(EXIT_FAILURE);
 	}
-	if (ft_strnstr(argv[1], ".ber", ft_strlen(argv[1])) == NULL)
+	int line_length = ft_line_length(fd);
+	ft_printf("Longueur de la première ligne : %d\n", line_length);
+	if (strcmp(ft_strchrr(argv[1], '.'), ".ber") != 0)
 	{
-		printf("Erreur\nle fomat carte doit etre .ber\n");
+		ft_printf("Erreur\nFomat carte '.ber' non reconnue\n");
 		exit(EXIT_FAILURE);
 	}
 	data->size_x = (ft_line_length(fd) * IMG_W);
 	data->size_y = (ft_count_lines(fd, data->size_x, IMG_W) * IMG_H);
+	ft_printf("Taille de la fenêtre (data->size_x) : %d\n", data->size_x);
+	ft_printf("Taille de la fenêtre (data->size_y) : %d\n", data->size_y);
 }
 
 
@@ -48,9 +59,9 @@ void	ft_create_map(t_data *data)
 		else if (data->map->map[data->map->y][data->map->x] == '1')
 			ft_put_object(data, "./assets/texture_map/mur_haut.xpm");
 		else if (data->map->map[data->map->y][data->map->x] == 'C')
-			ft_put_object(data, "./textures/collectable.xpm");
+			ft_put_object(data, "./assets/texture_item/card.xpm");
 		else if (data->map->map[data->map->y][data->map->x] == 'E')
-			ft_put_object(data, "./textures/exit.xpm");
+			ft_put_object(data, "./assets/texture_item/exit.xpm");
 		if (data->map->x < (data->size_x / IMG_W))
 			data->map->x++;
 		else

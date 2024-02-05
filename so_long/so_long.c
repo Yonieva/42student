@@ -18,7 +18,7 @@
 int	ft_exit(t_data *data)
 {
 	mlx_destroy_window(data->mlx, data->win);
-	ft_printf("Snake ? Snake ?? Snaaaaaaaaaaaaaakkkke !! :(\n");
+	ft_printf("Snake ? Snake ?? Snaaaaaaaaaaaaaakkkke !!\n");
 	ft_printf("GAME OVER\n");
 	exit(EXIT_SUCCESS);
 }
@@ -26,11 +26,9 @@ int	ft_exit(t_data *data)
 
 
 
-
-
 /****************************************************************************/
 /* affiche la carte + enregistre donnees clavier-souris */
-static int	ft_render_next_frame(t_data *data)
+int	ft_render_next_frame(t_data *data)
 {
 	ft_put_background(data);
 	ft_create_map(data);
@@ -44,9 +42,11 @@ static int	ft_render_next_frame(t_data *data)
 
 
 /****************************************************************************/
-/* LANCEMENT DU PROGRAMME */
 int	main(int argc, char **argv)
 {
+
+
+	/* LANCEMENT DU PROGRAMME */
     /*Initialisation des Structures*/
 	t_data	data;
 	t_map	map;
@@ -54,42 +54,40 @@ int	main(int argc, char **argv)
 
     /*détermine la taille de la fenêtre selon les arguments argv*/
 	ft_window_size(&data, argv);
-
     /*allocation de la mémoire pour la Carte*/
 	map.map = ft_calloc(data.size_y + 1, sizeof(char *));
 	if (!map.map)
 	{
-		perror("Error\ncalloc failed\n");
+		ft_printf("Erreur\nallocation echouee\n");
 		exit(EXIT_FAILURE);
 	}
 
-
-    /*initialiser la structure de données*/
+ /*initialiser la structure de données*/
 	ft_init(&data, &map);
+
     /*analyser les données de la carte*/
 	ft_parse_input(&data, argv, argc);
-
-
-
-    /*initialisation de MiniLibX*/
+  
+  /*initialisation de MiniLibX*/
 	data.mlx = mlx_init();
 	if (!data.mlx)
 	{
-		perror("Error\nprogramm init failed\n");
+		ft_printf("Erreur\ninitialisation de la mlx echouee\n");
 		exit(EXIT_FAILURE);
 	}
 
 
-    /*création de la Fenêtre*/
-	data.win = mlx_new_window(data.mlx, data.size_x,
-			data.size_y, "./so_long");
+	/*création de la Fenêtre*/
+	data.win = mlx_new_window(data.mlx, data.size_x, data.size_y, "METAL GEAR 42");
+
 
     /*rendu première frame*/
 	ft_render_next_frame(&data);
 
     /*boucle Principale + message si erreur et sortie*/
 	mlx_loop(data.mlx);
-	perror("Error\nloop failed\n");
+	ft_printf("Erreur\nmlx_loop echoue\n");
 	exit(EXIT_FAILURE);
+
 }
 /****************************************************************************/

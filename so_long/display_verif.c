@@ -15,7 +15,7 @@
 
 
 /****************************************************************************/
-/* remplit l'écran avec une image de fond */
+/* remplit l'écran avec un background */
 void	ft_put_background(t_data *data)
 
 {
@@ -49,16 +49,12 @@ void	ft_put_object(t_data *data, char *relative_path)
 	int		img_height;
 
 	data->map->object = mlx_xpm_file_to_image(data->mlx, relative_path,
-		    &img_width, &img_height);
+		    		&img_width, &img_height);
 
 	mlx_put_image_to_window(data->mlx, data->win, data->map->object,
 		(data->map->x * IMG_W), (data->map->y * IMG_H));
 }
 /****************************************************************************/
-
-
-
-
 
 
 
@@ -69,6 +65,6 @@ void	ft_put_player(t_data *data)
 	data->p_x = data->map->x;
 	data->p_y = data->map->y;
 	mlx_put_image_to_window(data->mlx, data->win, data->img->player_up,
-		(data->p_x * IMG_W), (data->p_y * IMG_H));
+			(data->p_x * IMG_W), (data->p_y * IMG_H));
 }
 /****************************************************************************/

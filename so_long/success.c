@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   success.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/24 14:52:46 by yonieva           #+#    #+#             */
-/*   Updated: 2023/10/04 16:28:43 by yonieva          ###   ########.fr       */
+/*   Created: 2024/02/02 00:06:12 by yonieva           #+#    #+#             */
+/*   Updated: 2024/02/02 00:06:12 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "so_long.h"
 
-size_t	ft_strlen(const char *str)
+void	ft_win(t_data *data)
 {
-	int	i;
-
-	i = 0;
-	if (!str)
-		return (0);
-	while (str[i] != '\0')
-		i++;
-	return (i);
+	printf("WWOOOOOOOOOOOOOOOOOOOOOOOOOOOO.\n");
+	printf("Is %d moves really the best you can do?\n", data->counter);
+	exit(EXIT_SUCCESS);
 }

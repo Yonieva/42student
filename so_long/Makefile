@@ -10,7 +10,7 @@ MLX_LIB = $(MLX_PATH)libmlx.a
 
 MLX_FLAGS = -Lmlx -lmlx 
 
-X11_FLAGS = -L/usr/X11/lib -lXext -lX11
+X11_FLAGS = -L/usr/lib/x86_64-linux-gnu -lXext -lX11
 
 LIBFT_PATH = libft/
 
@@ -26,6 +26,17 @@ CUT = "\033[K"
 
 CFILES = \
 		so_long.c\
+		map.c\
+		ft_count_lines.c\
+		ft_line_length.c\
+		ft_count_item.c\
+		verif.c\
+		ft_key_hook.c\
+		move.c\
+		init.c\
+		display_verif.c\
+		success.c
+		
 		
 		
 
@@ -67,6 +78,6 @@ fclean: clean
 re: fclean all
 
 norm:
-	norminette libft so_long.c so_long.h 
+	norminette libft so_long.c map.c ft_count_lines.c ft_key_hook.c ft_line_length.c ft_count_item.c verif.c move.c init.c display_verif.c success.c
 
 .PHONY: all clean fclean re norm
