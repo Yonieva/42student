@@ -33,9 +33,9 @@ int	ft_count_lines(int fd, int x, int img_w)
 			break ;
 		ft_printf("x: %d, img_w: %d, line: %s\n", x, img_w, line);
 		size_t line_length = ft_strlen(line);
-		if ((int)line_length != x / img_w || (line_length == 1 && *line != '\n'))
+		if ((int)line_length < (x / img_w) || (line_length == 1 && *line != '\n'))
 		{
-			ft_printf("Expected Length: %d, Actual Length: %zu\n", x / img_w, line_length);
+			ft_printf("Expected Length: %d, Actual Length: %d\n", x / img_w, line_length);
 			free(line);
 			exit_error();
 		}

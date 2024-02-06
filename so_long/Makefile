@@ -2,7 +2,7 @@ NAME = so_long
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror 
+CFLAGS = -g -o -Wall -Wextra -Werror 
 
 MLX_PATH = mlx/
 

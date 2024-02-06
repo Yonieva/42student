@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:58:11 by yonieva           #+#    #+#             */
-/*   Updated: 2024/02/05 21:10:47 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/02/05 23:05:18 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	ft_printf(const char *format, ...);
 /*-----------------------------GET NEXT LINE---------------------------------*/
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1024
+#  define BUFFER_SIZE 16
 # endif
 
 char	*get_next_line(int fd);

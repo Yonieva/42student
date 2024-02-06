@@ -35,8 +35,8 @@
 
 /* ********** definitions taille ecran + touches pour clavier mac ********** */
 
-# define IMG_W 32
-# define IMG_H 32
+# define IMG_W 1024
+# define IMG_H 1080
 # define ESC 53
 # define W 13
 # define A 0

@@ -45,21 +45,17 @@ void	ft_init(t_data *data, t_map *map)
 		exit(EXIT_FAILURE);
 	}
 	data->img = img;
-	relative_path = "assets/texture_player/snake_up.xpm";
-	data->img->player_up = mlx_xpm_file_to_image(data->mlx, relative_path,
-			&img_width, &img_height);
+	relative_path = "./assets/texture_player/snake_up.xpm";
+	data->img->player_up = mlx_xpm_file_to_image(data->mlx, relative_path, (int*)IMG_W, (int*)IMG_H);
+	if (data->img->player_up == NULL) 
 	relative_path = "./assets/texture_player/snake_left.xpm";
-	data->img->player_left = mlx_xpm_file_to_image(data->mlx, relative_path,
-			&img_width, &img_height);
+	data->img->player_left = mlx_xpm_file_to_image(data->mlx, relative_path, (int*)IMG_W, (int*)IMG_H);
 	relative_path = "./assets/texture_player/snake_down.xpm";
-	data->img->player_down = mlx_xpm_file_to_image(data->mlx, relative_path,
-			&img_width, &img_height);
+	data->img->player_down = mlx_xpm_file_to_image(data->mlx, relative_path, (int*)IMG_W, (int*)IMG_H);
 	relative_path = "./assets/texture_player/snake_right.xpm";
-	data->img->player_right = mlx_xpm_file_to_image(data->mlx, relative_path,
-			&img_width, &img_height);
+	data->img->player_right = mlx_xpm_file_to_image(data->mlx, relative_path, (int*)IMG_W, (int*)IMG_H);
 	relative_path = "./assets/texture_map/sol.xpm";
-	data->img->background = mlx_xpm_file_to_image(data->mlx, relative_path,
-			&img_width, &img_height);
+	data->img->background = mlx_xpm_file_to_image(data->mlx, relative_path, (int*)IMG_W, (int*)IMG_H);
 	data->counter = 0;
 	data->collected = 0;
 }

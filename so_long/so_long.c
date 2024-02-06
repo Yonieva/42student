@@ -51,9 +51,9 @@ int	main(int argc, char **argv)
 	t_data	data;
 	t_map	map;
 
-
-    /*détermine la taille de la fenêtre selon les arguments argv*/
+	/*détermine la taille de la fenêtre selon les arguments argv*/
 	ft_window_size(&data, argv);
+
     /*allocation de la mémoire pour la Carte*/
 	map.map = ft_calloc(data.size_y + 1, sizeof(char *));
 	if (!map.map)
@@ -62,13 +62,13 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
- /*initialiser la structure de données*/
+	 /*initialiser la structure de données*/
 	ft_init(&data, &map);
 
     /*analyser les données de la carte*/
 	ft_parse_input(&data, argv, argc);
   
-  /*initialisation de MiniLibX*/
+ 	/*initialisation de MiniLibX*/
 	data.mlx = mlx_init();
 	if (!data.mlx)
 	{
@@ -79,7 +79,7 @@ int	main(int argc, char **argv)
 
 	/*création de la Fenêtre*/
 	data.win = mlx_new_window(data.mlx, data.size_x, data.size_y, "METAL GEAR 42");
-
+  
 
     /*rendu première frame*/
 	ft_render_next_frame(&data);
