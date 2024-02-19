@@ -15,6 +15,9 @@
 #include "../lib/so_long.h"
 #include <stdio.h>
 
+
+/****************************************************************************/
+/*Initialisation des valeurs par defaut*/
 void	init_struct(t_game *game)
 {
 	game->map = NULL;
@@ -34,7 +37,13 @@ void	init_struct(t_game *game)
 		freeallexit2("\033[0;31mErreur mlxptr (Check Xming)\e[0m", game);
 	ft_bzero(&(game->img), sizeof(t_xmp));
 }
+/****************************************************************************/
 
+
+
+
+/****************************************************************************/
+/*Verif si player est entoure d espcace ou de collectable, si oui return 1*/
 int	checkplayer(t_game *game, int x, int y)
 {
 	if (game->mapcopy[x][y] == 'P' &&
@@ -49,7 +58,13 @@ int	checkplayer(t_game *game, int x, int y)
 		return (1);
 	return (0);
 }
+/****************************************************************************/
 
+
+
+
+/****************************************************************************/
+/*Maj du P a la place d un 0 ou d un C*/
 void	aroundplayer(t_game *game, int x, int y)
 {
 	if (game->mapcopy[x][y] == 'C' || game->mapcopy[x][y] == '0')
@@ -59,7 +74,14 @@ void	aroundplayer(t_game *game, int x, int y)
 		game->mapcopy[x][y] = 'P';
 	}
 }
+/****************************************************************************/
 
+
+
+
+
+/****************************************************************************/
+/*Verifie si le joueur a atteint la sortie*/
 int	exitcheck(t_game *game)
 {
 	int	x;
@@ -82,7 +104,13 @@ int	exitcheck(t_game *game)
 	}
 	return (freeallexit3("\033[0;31mNo succesfull path found\n\e[0m", game), 0);
 }
+/****************************************************************************/
 
+
+
+
+/****************************************************************************/
+/*Verifie chemin valide de P a E, verifie si conditions ok pour sortir*/
 int	path_ok(t_game *game)
 {
 	int	x;
@@ -111,6 +139,13 @@ int	path_ok(t_game *game)
 		return (1);
 	return (freeallexit3("\033[0;31mNo succesfull path found\n\e[0m", game), 0);
 }
+/****************************************************************************/
+
+
+
+
+
+
 
 // int	main(int argc, char **argv)
 // {

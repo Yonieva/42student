@@ -12,9 +12,6 @@
 
 #include "../lib/so_long.h"
 
-// open the file, error message if doesn't work
-// gnl, join it and split it again
-// input nb of colums in X
 
 int	map_open(char *av, t_game *game, int fd)
 {

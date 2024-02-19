@@ -14,8 +14,9 @@
 
 #include "../lib/so_long.h"
 
-// check that the map ONLY contains "1C0EP"
 
+/****************************************************************************/
+/*Verifs si map contient "1C0EP"*/
 void	char_mapcheck(t_game *game, char c, int x, int y)
 {
 	if (c == 'C')
@@ -33,9 +34,14 @@ void	char_mapcheck(t_game *game, char c, int x, int y)
 	else
 		freeallexit3("\033[0;31mLa map doit se composer uniquement de '0,1,P,E,C'\n\e[0m", game);
 }
+/****************************************************************************/
 
-// display error message according to char errors in map
 
+
+
+
+/****************************************************************************/
+/*Affiche message d erreur lie a la map*/
 void	charerror_map(t_game *game)
 {
 	int	x;
@@ -63,9 +69,11 @@ void	charerror_map(t_game *game)
 	if (game->exit == 0 || game->exit > 1)
 		freeallexit3("\033[0;31mAucune ou plusieurs Sorties ...\n\e[0m", game);
 }
+/****************************************************************************/
 
-// check if there are walls all around the map
 
+/****************************************************************************/
+/*Verif si des murs entoure la map*/
 void	walls_mapcheck(t_game *game)
 {
 	int	i;
@@ -86,9 +94,15 @@ void	walls_mapcheck(t_game *game)
 		i++;
 	}
 }
+/****************************************************************************/
 
-// check if the map is rectangular + display error message for walls
 
+
+
+
+
+/****************************************************************************/
+/*Verif si map rectangulaire*/
 void	rectangular_mapcheck(t_game *game)
 {
 	int	x;
@@ -102,7 +116,7 @@ void	rectangular_mapcheck(t_game *game)
 	{
 		x = ft_strlen(game->map[y]);
 		if (x != size)
-			freeallexit3("\033[0;31mPLa Map n est pas rectangulaire !\n\e[0m", game);
+			freeallexit3("\033[0;31mLa Map n est pas rectangulaire !\n\e[0m", game);
 		y++;
 	}
 }
