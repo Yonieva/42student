@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:39:59 by yonieva           #+#    #+#             */
-/*   Updated: 2024/02/17 15:48:00 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/03/03 19:40:05 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <X11/Xutil.h>
 # include <X11/keysym.h>
 # include <unistd.h>
+# include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
 
@@ -70,6 +71,13 @@ typedef struct s_game
 
 
 
+
+
+
+
+
+
+
 /**************************************Fonctions********************************************/
 /*******************************************************************************************/
 
@@ -88,9 +96,7 @@ void	xpmtoimage(t_game *game);
 void	imgtowin(t_game *game, int x, int y);
 int		displaygame(t_game *game);
 int		freefinal(t_game *game);
-int		freeallexit(char *error, t_game *game);
-int		freeallexit2(char *error, t_game *game);
-int		freeallexit3(char *error, t_game *game);
+
 
 
 
@@ -112,6 +118,12 @@ void	aroundplayer(t_game *game, int x, int y);
 int		exitcheck(t_game *game);
 int		path_ok(t_game *game);
 int		mapcopy(t_game *game);
+
+
+/********FREE ET SORTIES D ERREURS*********/
+int		freeallexit(char *error, t_game *game);
+int		freeallexit2(char *error, t_game *game);
+int		freeallexit3(char *error, t_game *game);
 
 #endif
 /*******************************************************************************************/

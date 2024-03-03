@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 14:52:54 by khuynh            #+#    #+#             */
-/*   Updated: 2024/02/18 22:22:15 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:35:03 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	map_open(char *av, t_game *game, int fd)
 
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
-		return (freeallexit2("Lecture invalide du fichier\n", game), exit(4), 0);
+		return (freeallexit2("Lecture invalide du fichier\n", game), exit(-1), 0);
 	gnl = ft_strdup("");
 	line = get_next_line(fd);
 	if (!line)
@@ -51,16 +51,20 @@ int	mapcopy(t_game *game)
 	if (!game->mapcopy)
 		return (0);
 	x = 0;
+	y = 0;
 	while (x < game->y)
 	{
 		game->mapcopy[x] = ft_calloc(game->x + 1, sizeof(char));
 		if (!game->mapcopy)
 			return (0);
-		y = -1;
-		while (game->map[x][++y])
+		y = 0;
+		while (game->map[x][y])
+		{
 			game->mapcopy[x][y] = game->map[x][y];
+			y++;
+		}
 		x++;
 	}
-	game->mapcopy[x] = 0;
+	game->mapcopy[x] = NULL;
 	return (1);
 }

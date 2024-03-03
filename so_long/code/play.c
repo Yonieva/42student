@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:07:03 by yonieva           #+#    #+#             */
-/*   Updated: 2024/02/18 22:37:37 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/03/03 19:22:07 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int	keyactions(int key, t_game *game)
 	else if (key == 'd' || key == XK_Right)
 		y++;
 	else if (key == 65307)
-		freeallexit("", game);
+		freeallexit("MISSION ABORT !\nRETOUR AU TERMINAL\n", game);
 	if (game->complete != 1)
 		movereset(game, x, y, key);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:54:25 by yonieva           #+#    #+#             */
-/*   Updated: 2024/02/17 16:05:41 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:31:26 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	freemaps(t_game *game)
 
 	i = 0;
 	if (!game->map)
-		freeallexit2("\033[0;31mError: Map vide\n\e[0m", game);
+		freeallexit2("\033[0;31mErreur: Map vide\n\e[0m", game);
 	while (game->map[i])
 	{
 		free(game->map[i]);

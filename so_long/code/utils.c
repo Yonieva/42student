@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:06:54 by yonieva           #+#    #+#             */
-/*   Updated: 2024/02/18 22:31:34 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/03/03 19:15:03 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	init_struct(t_game *game)
 	game->complete = 0;
 	game->mlxptr = mlx_init();
 	if (!game->mlxptr)
-		freeallexit2("\033[0;31mErreur mlxptr (Check Xming)\e[0m", game);
+		freeallexit2("\033[0;31mErreur MinilibX - > mlxptr (Check Xming)\e[0m", game);
 	ft_bzero(&(game->img), sizeof(t_xmp));
 }
 /****************************************************************************/
@@ -43,7 +43,7 @@ void	init_struct(t_game *game)
 
 
 /****************************************************************************/
-/*Verif si player est entoure d espcace ou de collectable, si oui return 1*/
+/*Verif si player est entoure de 0 ou de C*/
 int	checkplayer(t_game *game, int x, int y)
 {
 	if (game->mapcopy[x][y] == 'P' &&
@@ -102,7 +102,7 @@ int	exitcheck(t_game *game)
 		}
 		x++;
 	}
-	return (freeallexit3("\033[0;31mNo succesfull path found\n\e[0m", game), 0);
+	return (freeallexit3("\033[0;31mChemin non valide\n\e[0m", game), 0);
 }
 /****************************************************************************/
 
@@ -137,7 +137,7 @@ int	path_ok(t_game *game)
 	}
 	if (game->copycollect == 0 && exitcheck(game))
 		return (1);
-	return (freeallexit3("\033[0;31mNo succesfull path found\n\e[0m", game), 0);
+	return (freeallexit3("\033[0;31mChemin non valide\n\e[0m", game), 0);
 }
 /****************************************************************************/
 
