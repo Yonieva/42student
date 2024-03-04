@@ -12,7 +12,6 @@
 
 #include "../lib/so_long.h"
 
-
 int	map_open(char *av, t_game *game, int fd)
 {
 	char	*line;
@@ -20,7 +19,7 @@ int	map_open(char *av, t_game *game, int fd)
 
 	fd = open(av, O_RDONLY);
 	if (fd < 0)
-		return (freeallexit2("Lecture invalide du fichier\n", game), exit(-1), 0);
+		return (freeallexit2("Error\nLecture echouee\n", game), exit(-1), 0);
 	gnl = ft_strdup("");
 	line = get_next_line(fd);
 	if (!line)

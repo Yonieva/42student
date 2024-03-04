@@ -38,6 +38,6 @@ int main ()
 
 	str1 = "Salut";
 	printf("Ma fonction avec src < dest : %ld\n", ft_strlcpy(str2, str1, 5));
-	printf("La fonction strlcpy avec src < dest : %ld\n", strlcpy(str2, str1, 5));
+	printf("strlcpy avec src < dest : %ld\n", strlcpy(str2, str1, 5));
 }
 */

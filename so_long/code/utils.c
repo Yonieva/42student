@@ -10,11 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "../lib/so_long.h"
 #include <stdio.h>
-
 
 /****************************************************************************/
 /*Initialisation des valeurs par defaut*/
@@ -34,13 +31,10 @@ void	init_struct(t_game *game)
 	game->complete = 0;
 	game->mlxptr = mlx_init();
 	if (!game->mlxptr)
-		freeallexit2("\033[0;31mErreur MinilibX - > mlxptr (Check Xming)\e[0m", game);
+		freeallexit2("\033[0;31mErreur MinilibX - > mlxptr[0m", game);
 	ft_bzero(&(game->img), sizeof(t_xmp));
 }
 /****************************************************************************/
-
-
-
 
 /****************************************************************************/
 /*Verif si player est entoure de 0 ou de C*/
@@ -60,9 +54,6 @@ int	checkplayer(t_game *game, int x, int y)
 }
 /****************************************************************************/
 
-
-
-
 /****************************************************************************/
 /*Maj du P a la place d un 0 ou d un C*/
 void	aroundplayer(t_game *game, int x, int y)
@@ -75,10 +66,6 @@ void	aroundplayer(t_game *game, int x, int y)
 	}
 }
 /****************************************************************************/
-
-
-
-
 
 /****************************************************************************/
 /*Verifie si le joueur a atteint la sortie*/
@@ -105,9 +92,6 @@ int	exitcheck(t_game *game)
 	return (freeallexit3("\033[0;31mChemin non valide\n\e[0m", game), 0);
 }
 /****************************************************************************/
-
-
-
 
 /****************************************************************************/
 /*Verifie chemin valide de P a E, verifie si conditions ok pour sortir*/
@@ -140,12 +124,6 @@ int	path_ok(t_game *game)
 	return (freeallexit3("\033[0;31mChemin non valide\n\e[0m", game), 0);
 }
 /****************************************************************************/
-
-
-
-
-
-
 
 // int	main(int argc, char **argv)
 // {

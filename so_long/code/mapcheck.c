@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "../lib/so_long.h"
-
 
 /****************************************************************************/
 /*Verifs si map contient "1C0EP"*/
@@ -32,13 +29,9 @@ void	char_mapcheck(t_game *game, char c, int x, int y)
 	else if (c == '1' || c == '0')
 		return ;
 	else
-		freeallexit3("\033[0;31mLa map doit se composer uniquement de '0,1,P,E,C'\n\e[0m", game);
+		freeallexit3("\033[0;31mError\nElements null ou doublon\n\e[0m", game);
 }
 /****************************************************************************/
-
-
-
-
 
 /****************************************************************************/
 /*Affiche message d erreur lie a la map*/
@@ -61,18 +54,17 @@ void	charerror_map(t_game *game)
 		x++;
 	}
 	if (game->collect == 0)
-		freeallexit3("\033[0;31mPas de Collectable !\n\e[0m", game);
+		freeallexit3("\033[0;31mError\nPas de Collectable !\n\e[0m", game);
 	if (game->player == 0)
-		freeallexit3("\033[0;31mPas de Joueur !\n\e[0m", game);
+		freeallexit3("\033[0;31mError\nPas de Joueur !\n\e[0m", game);
 	if (game->player > 1)
-		freeallexit3("\033[0;31mPlus de 1 Joueur !\n\e[0m", game);
+		freeallexit3("\033[0;31mError\nPlus de 1 Joueur !\n\e[0m", game);
 	if (game->exit == 0 || game->exit > 1)
-		freeallexit3("\033[0;31mAucune ou plusieurs Sorties ...\n\e[0m", game);
+		freeallexit3("\033[0;31mError\npas ou trop de sortie\n\e[0m", game);
 }
-/****************************************************************************/
+/***************************************************************************/
 
-
-/****************************************************************************/
+/***************************************************************************/
 /*Verif si des murs entoure la map*/
 void	walls_mapcheck(t_game *game)
 {
@@ -86,20 +78,15 @@ void	walls_mapcheck(t_game *game)
 		while (game->map[i][j])
 		{
 			if (game->map[0][j] != '1' || game->map[game->y - 1][j] != '1')
-				freeallexit3("\033[0;31mUn ou plusieurs Murs manquants !\n\e[0m", game);
+				freeallexit3("\033[0;31mError\n Murs manquants !\n\e[0m", game);
 			if (game->map[i][0] != '1' || game->map[i][game->x - 1] != '1')
-				freeallexit3("\033[0;31mUn ou plusieurs Murs manquants !\n\e[0m", game);
+				freeallexit3("\033[0;31mError\n Murs manquants !\n\e[0m", game);
 			j++;
 		}
 		i++;
 	}
 }
 /****************************************************************************/
-
-
-
-
-
 
 /****************************************************************************/
 /*Verif si map rectangulaire*/
@@ -116,7 +103,7 @@ void	rectangular_mapcheck(t_game *game)
 	{
 		x = ft_strlen(game->map[y]);
 		if (x != size)
-			freeallexit3("\033[0;31mLa Map n est pas rectangulaire !\n\e[0m", game);
+			freeallexit3("\033[0;31mError\nmap non rectangulaire !\n\e[0m", game);
 		y++;
 	}
 }

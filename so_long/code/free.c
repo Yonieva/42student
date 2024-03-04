@@ -10,11 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "../lib/so_long.h"
-
-
 /* ************************************************************************** */
 /*parkour rows de la map et free  mémoire pour chq row/idem copie de la carte.*/
 void	freemaps(t_game *game)
@@ -23,7 +19,7 @@ void	freemaps(t_game *game)
 
 	i = 0;
 	if (!game->map)
-		freeallexit2("\033[0;31mErreur: Map vide\n\e[0m", game);
+		freeallexit2("\033[0;31mError\nMap vide\n\e[0m", game);
 	while (game->map[i])
 	{
 		free(game->map[i]);
@@ -35,13 +31,10 @@ void	freemaps(t_game *game)
 }
 /* ************************************************************************** */
 
-
-
-
 /* ************************************************************************** */
 /*appel freemaps/detruit fenetre/detruit images/detruit affichage.*/
 int	freefinal(t_game *game)
-{	
+{
 	if (game->map != NULL)
 		freemaps(game);
 	if (game->mlxwin != NULL)
@@ -65,13 +58,10 @@ int	freefinal(t_game *game)
 }
 /* ************************************************************************** */
 
-
-
-
 /*idem freefinal, mais elle affiche d'abord un message d'erreur*/
 /* ************************************************************************** */
 int	freeallexit(char *error, t_game *game)
-{	
+{
 	ft_printf("%s", error);
 	if (game->map != NULL)
 		freemaps(game);
@@ -95,15 +85,12 @@ int	freeallexit(char *error, t_game *game)
 	exit (0);
 }
 /* ************************************************************************** */
-
-
-
 
 /*lorsque une partie des data doit être libérée en cas d'err.
 affiche msg err et free l'affichage.*/
 /* ************************************************************************** */
 int	freeallexit2(char *error, t_game *game)
-{	
+{
 	ft_printf("%s", error);
 	if (game->mlxptr != NULL)
 	{
@@ -114,14 +101,10 @@ int	freeallexit2(char *error, t_game *game)
 }
 /* ************************************************************************** */
 
-
-
-
-
-/*idem freeallexit mais elle ne free pas  (game->mlxptr) après avoir avoir call freemaps*/
+/*idem freeallexit mai ne free pas  (game->mlxptr)*/
 /* ************************************************************************** */
 int	freeallexit3(char *error, t_game *game)
-{	
+{
 	ft_printf("%s", error);
 	if (game->map != NULL)
 		freemaps(game);

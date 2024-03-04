@@ -87,7 +87,7 @@ clean:
 	@rm -rf obj/
 	@rm -f ${OBJS}
 	@make $@ -C ../lib/libft/
-	@echo "${BOLDGREEN}ALL CLEAN plus aucun Objs ${RS}"
+	@echo "${BOLDGREEN}Tout les objs ont ete supprimes ${RS}"
 	@echo "${BOLDGREEN}By HIDEO KOJIMA ${RS}"
 
 

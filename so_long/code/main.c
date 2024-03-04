@@ -9,12 +9,7 @@
 /*   Updated: 2024/03/03 19:13:37 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-
-
 #include "../lib/so_long.h"
-
-
 /****************************************************************************/
 /*Verifs des arguments*/
 void	argcheck(int ac, char **av)
@@ -28,7 +23,7 @@ void	argcheck(int ac, char **av)
 	ber = ".ber";
 	if (ac < 2 || ac > 2)
 	{
-		ft_putstr_fd("Erreur nombre d'arguments, ex : './so_long/maps/test.ber'", 2);
+		ft_putstr_fd("Err nbrs d'arguments, ex: './so_long/maps/test.ber'", 2);
 		exit (EXIT_FAILURE);
 	}
 	while (av[1][i])
@@ -47,9 +42,6 @@ void	argcheck(int ac, char **av)
 }
 /***************************************************************************/
 
-
-
-
 /***************************************************************************/
 /*Lancement du programme*/
 int	main(int ac, char **av)
@@ -60,26 +52,17 @@ int	main(int ac, char **av)
 	init_struct(&game);
 	map_open(av[1], &game, 0);
 	charerror_map(&game);
-	rectangular_mapcheck(&game);  
+	rectangular_mapcheck(&game);
 	walls_mapcheck(&game);
 	if (path_ok(&game))
 	{
 		game.mlxwin = mlx_new_window(game.mlxptr, game.x * 64,
 				game.y * 64, "METAL GEAR 42");
 		xpmtoimage(&game);
-
-		/*configure la loop.*/
-		mlx_loop_hook(game.mlxptr, displaygame, &game); 
-		
-		/*gestion d'événement touches clavier*/
+		mlx_loop_hook(game.mlxptr, displaygame, &game);
 		mlx_hook(game.mlxwin, 02, 1L << 0, keyactions, &game);
-
-		/*gestion d'événement fermeture fenêtre graphique*/
 		mlx_hook(game.mlxwin, 33, 0L, freefinal, &game);
-		
-		/*loop mlx*/
 		mlx_loop(game.mlxptr);
-		
 		free(game.mlxptr);
 	}
 	return (0);
