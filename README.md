@@ -1,4 +1,4 @@
-MON CURSUS A 42                           
+MON CURSUS  42                           
                                                                 
 Piscine Aout 2023
 
