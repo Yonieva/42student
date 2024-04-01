@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 14:54:46 by yonieva           #+#    #+#             */
-/*   Updated: 2024/03/07 21:33:52 by yonieva          ###   ########.fr       */
+/*   Created: 2023/10/28 12:47:34 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/28 12:47:41 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list *ptr;
-	int temp;
-	ptr = lst;
+	t_list	*temp;
 
-	while (lst->next != NULL)
+	if (!lst)
+		return (NULL);
+	temp = lst;
+	while (temp->next)
 	{
-		if ((*cmp)(lst->data, lst->next->data) == 0)
-		{
-			temp = lst->data;
-			lst->data = lst->next->data;
-			lst->next->data = temp;
-			lst = ptr;
-		}
-		else
-		{
-			lst = lst->next;
-		}
+		temp = temp->next;
 	}
-	lst = ptr;
-	return (lst);
-
-
-	
+	return (temp);
 }

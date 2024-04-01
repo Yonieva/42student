@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 14:54:46 by yonieva           #+#    #+#             */
-/*   Updated: 2024/03/07 21:33:52 by yonieva          ###   ########.fr       */
+/*   Created: 2023/10/12 20:36:32 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/12 20:38:40 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+char	*ft_strtrim(const char *str, const char *set)
 {
-	t_list *ptr;
-	int temp;
-	ptr = lst;
+	size_t	start;
+	size_t	end;
 
-	while (lst->next != NULL)
-	{
-		if ((*cmp)(lst->data, lst->next->data) == 0)
-		{
-			temp = lst->data;
-			lst->data = lst->next->data;
-			lst->next->data = temp;
-			lst = ptr;
-		}
-		else
-		{
-			lst = lst->next;
-		}
-	}
-	lst = ptr;
-	return (lst);
-
-
-	
+	start = 0;
+	end = 0;
+	while (str[start] != '\0' && ft_strchr(set, str[start]))
+		start++;
+	end = ft_strlen(str) - 1;
+	while (end > 0 && ft_strchr(set, str[end]))
+		end--;
+	return (ft_substr(str, start, end - start + 1));
 }

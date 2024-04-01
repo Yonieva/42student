@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   add_ft.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
+/*   By: yonieva <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/08 15:41:22 by yonieva           #+#    #+#             */
-/*   Updated: 2024/03/28 17:53:36 by yonieva          ###   ########.fr       */
+/*   Updated: 2023/11/08 18:21:23 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 int	print_char(int c)
 {

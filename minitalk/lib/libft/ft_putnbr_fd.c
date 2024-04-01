@@ -1,40 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 14:54:46 by yonieva           #+#    #+#             */
-/*   Updated: 2024/03/07 21:33:52 by yonieva          ###   ########.fr       */
+/*   Created: 2023/10/17 02:46:23 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/17 02:49:19 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+void	ft_putnbr_fd(int nb, int fd)
 {
-	t_list *ptr;
-	int temp;
-	ptr = lst;
+	char	digit;
 
-	while (lst->next != NULL)
+	digit = 0;
+	if (nb == -2147483648)
+		write(fd, "-2147483648", 11);
+	else if (nb < 0)
 	{
-		if ((*cmp)(lst->data, lst->next->data) == 0)
-		{
-			temp = lst->data;
-			lst->data = lst->next->data;
-			lst->next->data = temp;
-			lst = ptr;
-		}
-		else
-		{
-			lst = lst->next;
-		}
+		write(fd, "-", 1);
+		nb = -nb;
+		ft_putnbr_fd(nb, fd);
 	}
-	lst = ptr;
-	return (lst);
-
-
-	
+	else if (nb >= 10)
+	{
+		ft_putnbr_fd(nb / 10, fd);
+		digit = (nb % 10) + 48;
+		write (fd, &digit, 1);
+	}
+	else
+	{
+		digit = nb + 48;
+		write(fd, &digit, 1);
+	}
 }

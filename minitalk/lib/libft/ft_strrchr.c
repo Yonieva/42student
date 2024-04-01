@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 14:54:46 by yonieva           #+#    #+#             */
-/*   Updated: 2024/03/07 21:33:52 by yonieva          ###   ########.fr       */
+/*   Created: 2023/10/05 14:18:14 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/18 14:24:27 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+char	*ft_strrchr(const char *str, int c)
 {
-	t_list *ptr;
-	int temp;
-	ptr = lst;
+	size_t			str_len;
+	char			*ptr;
+	unsigned char	nb;
 
-	while (lst->next != NULL)
+	nb = (unsigned char)c;
+	str_len = ft_strlen(str);
+	ptr = (char *)str;
+	if (nb == '\0')
+		return (ptr + ft_strlen(str));
+	while (str_len > 0)
 	{
-		if ((*cmp)(lst->data, lst->next->data) == 0)
+		if ((unsigned char)ptr[str_len - 1] == nb)
 		{
-			temp = lst->data;
-			lst->data = lst->next->data;
-			lst->next->data = temp;
-			lst = ptr;
+			return (ptr + str_len - 1);
 		}
-		else
-		{
-			lst = lst->next;
-		}
+		str_len--;
 	}
-	lst = ptr;
-	return (lst);
-
-
-	
+	return (NULL);
 }

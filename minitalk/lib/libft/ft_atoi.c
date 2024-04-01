@@ -1,40 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 14:54:46 by yonieva           #+#    #+#             */
-/*   Updated: 2024/03/07 21:33:52 by yonieva          ###   ########.fr       */
+/*   Created: 2023/09/24 15:27:17 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/09 01:12:11 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+int	ft_atoi(const char *str)
 {
-	t_list *ptr;
-	int temp;
-	ptr = lst;
+	int	i;
+	int	result;
+	int	sign;
 
-	while (lst->next != NULL)
+	i = 0;
+	result = 0;
+	sign = 1;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 	{
-		if ((*cmp)(lst->data, lst->next->data) == 0)
-		{
-			temp = lst->data;
-			lst->data = lst->next->data;
-			lst->next->data = temp;
-			lst = ptr;
-		}
-		else
-		{
-			lst = lst->next;
-		}
+		i++;
 	}
-	lst = ptr;
-	return (lst);
-
-
-	
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9' && str[i] != '\0')
+	{
+		result = result * 10 + str[i] - 48;
+		i++;
+	}
+	return (result * sign);
 }

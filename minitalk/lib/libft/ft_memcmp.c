@@ -1,40 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 14:54:46 by yonieva           #+#    #+#             */
-/*   Updated: 2024/03/07 21:33:52 by yonieva          ###   ########.fr       */
+/*   Created: 2023/10/06 11:01:59 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/06 11:02:09 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+int	ft_memcmp(const void *str1,	const void *str2, size_t nb)
 {
-	t_list *ptr;
-	int temp;
-	ptr = lst;
+	unsigned char	*temp1;
+	unsigned char	*temp2;
+	int				i;
 
-	while (lst->next != NULL)
+	temp1 = (unsigned char *)str1;
+	temp2 = (unsigned char *)str2;
+	i = 0;
+	while (nb > 0)
 	{
-		if ((*cmp)(lst->data, lst->next->data) == 0)
+		if (temp1[i] != temp2[i])
 		{
-			temp = lst->data;
-			lst->data = lst->next->data;
-			lst->next->data = temp;
-			lst = ptr;
+			return (temp1[i] - temp2[i]);
 		}
-		else
-		{
-			lst = lst->next;
-		}
+		i++;
+		nb--;
 	}
-	lst = ptr;
-	return (lst);
-
-
-	
+	return (0);
 }

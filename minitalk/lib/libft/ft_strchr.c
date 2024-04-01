@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 14:54:46 by yonieva           #+#    #+#             */
-/*   Updated: 2024/03/07 21:33:52 by yonieva          ###   ########.fr       */
+/*   Created: 2023/10/05 13:39:40 by yonieva           #+#    #+#             */
+/*   Updated: 2024/02/13 18:22:19 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+char	*ft_strchr(const char *str, int c)
 {
-	t_list *ptr;
-	int temp;
-	ptr = lst;
+	int		i;
+	char	*str1;
 
-	while (lst->next != NULL)
+	i = 0;
+	str1 = (char *)str;
+	while (str1[i] != '\0')
 	{
-		if ((*cmp)(lst->data, lst->next->data) == 0)
-		{
-			temp = lst->data;
-			lst->data = lst->next->data;
-			lst->next->data = temp;
-			lst = ptr;
-		}
-		else
-		{
-			lst = lst->next;
-		}
+		if (str1[i] == (char)c)
+			return (str1 + i);
+		i++;
 	}
-	lst = ptr;
-	return (lst);
-
-
-	
+	return (0);
 }
+/*
+#include <string.h>
+#include <stdio.h>
+int	main ()
+{
+	const char *str = "Comment?";
+	int	c = 'm';
+
+	printf("Ma fonction pour l exemple 'Comment?' : %s\n", ft_strchr(str, c));
+	printf("La fonction strchr : %s\n", strchr(str, c));
+}
+*/

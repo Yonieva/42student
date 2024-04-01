@@ -1,40 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 14:54:46 by yonieva           #+#    #+#             */
-/*   Updated: 2024/03/07 21:33:52 by yonieva          ###   ########.fr       */
+/*   Created: 2023/10/16 21:54:02 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/17 02:49:52 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	t_list *ptr;
-	int temp;
-	ptr = lst;
+	unsigned int	i;
 
-	while (lst->next != NULL)
+	i = 0;
+	if (!s || !f)
+		return ;
+	while (s[i] != '\0')
 	{
-		if ((*cmp)(lst->data, lst->next->data) == 0)
-		{
-			temp = lst->data;
-			lst->data = lst->next->data;
-			lst->next->data = temp;
-			lst = ptr;
-		}
-		else
-		{
-			lst = lst->next;
-		}
+		f(i, &s[i]);
+		i++;
 	}
-	lst = ptr;
-	return (lst);
-
-
-	
 }

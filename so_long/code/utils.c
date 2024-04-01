@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:06:54 by yonieva           #+#    #+#             */
-/*   Updated: 2024/03/03 19:15:03 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/03/06 19:53:41 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int	path_ok(t_game *game)
 
 // int	main(int argc, char **argv)
 // {
-// 	t_game game;
+// 	t_game game; 
 
 // 	argcheck(argc, argv);
 // 	init_struct(&game);

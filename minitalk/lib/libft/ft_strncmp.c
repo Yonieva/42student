@@ -1,40 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 14:54:46 by yonieva           #+#    #+#             */
-/*   Updated: 2024/03/07 21:33:52 by yonieva          ###   ########.fr       */
+/*   Created: 2023/10/05 14:41:42 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/18 15:13:40 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+int	ft_strncmp(const char *str1, const char *str2, size_t nb)
 {
-	t_list *ptr;
-	int temp;
-	ptr = lst;
+	size_t	i;
 
-	while (lst->next != NULL)
+	i = 0;
+	if (nb == 0)
 	{
-		if ((*cmp)(lst->data, lst->next->data) == 0)
-		{
-			temp = lst->data;
-			lst->data = lst->next->data;
-			lst->next->data = temp;
-			lst = ptr;
-		}
-		else
-		{
-			lst = lst->next;
-		}
+		return (0);
 	}
-	lst = ptr;
-	return (lst);
-
-
-	
+	while (i < nb && str1[i] && str2[i] && str1[i] == str2[i])
+	{
+		i++;
+	}
+	if (i < nb)
+	{
+		return ((unsigned char)str1[i] - (unsigned char)str2[i]);
+	}
+	return (0);
 }

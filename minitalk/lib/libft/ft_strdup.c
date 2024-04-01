@@ -1,40 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 14:54:46 by yonieva           #+#    #+#             */
-/*   Updated: 2024/03/07 21:33:52 by yonieva          ###   ########.fr       */
+/*   Created: 2023/10/06 13:33:00 by yonieva           #+#    #+#             */
+/*   Updated: 2024/02/14 00:04:43 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+char	*ft_strdup(const char *src)
 {
-	t_list *ptr;
-	int temp;
-	ptr = lst;
+	char	*copy;
+	int		i;
+	int		j;
 
-	while (lst->next != NULL)
+	i = 0;
+	while (src[i])
+		i++;
+	copy = malloc(sizeof(char) * i + 1);
+	if (!copy)
+		return (0);
+	j = 0;
+	while (j < i)
 	{
-		if ((*cmp)(lst->data, lst->next->data) == 0)
-		{
-			temp = lst->data;
-			lst->data = lst->next->data;
-			lst->next->data = temp;
-			lst = ptr;
-		}
-		else
-		{
-			lst = lst->next;
-		}
+		copy[j] = src[j];
+		j++;
 	}
-	lst = ptr;
-	return (lst);
-
-
-	
+	copy[j] = '\0';
+	return (copy);
 }

@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/20 14:54:46 by yonieva           #+#    #+#             */
-/*   Updated: 2024/03/07 21:33:52 by yonieva          ###   ########.fr       */
+/*   Created: 2023/09/25 23:44:35 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/02 16:37:22 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*sort_list(t_list* lst, int (*cmp)(int, int))
+void	*ft_memset(void *blocmem, int c, size_t len)
 {
-	t_list *ptr;
-	int temp;
-	ptr = lst;
+	size_t			i;
+	unsigned char	*struc;
 
-	while (lst->next != NULL)
+	struc = (unsigned char *)blocmem;
+	i = 0;
+	while (i < len)
 	{
-		if ((*cmp)(lst->data, lst->next->data) == 0)
-		{
-			temp = lst->data;
-			lst->data = lst->next->data;
-			lst->next->data = temp;
-			lst = ptr;
-		}
-		else
-		{
-			lst = lst->next;
-		}
+		struc[i] = (unsigned char)c;
+		i++;
 	}
-	lst = ptr;
-	return (lst);
-
-
-	
+	return (blocmem);
 }
