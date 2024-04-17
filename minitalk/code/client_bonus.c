@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 22:21:56 by yonieva           #+#    #+#             */
-/*   Updated: 2024/04/16 22:40:19 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/04/17 23:06:51 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ static void	ft_send_bit(char c, int bit, int pid)
 	if (c & (128 >> bit))
 	{
 		if (kill(pid, SIGUSR2) == -1)
-			ft_printf("\033[0;35mL envoi du signal a echoue ❌\n");
+			ft_printf("\033[0;35mL envoi du signal 2 a echoue ❌\n");
 	}
 	else
 	{
 		if (kill(pid, SIGUSR1) == -1)
-			ft_printf("\033[0;35mL envoi du signal a echoue ❌\n");
+			ft_printf("\033[0;35mL envoi du signal 1 a echoue ❌\n");
 	}
 }
 
@@ -73,7 +73,7 @@ static void	ft_char_to_binary(char c, int pid)
 			if (time_out >= 3)
 			{	
 				ft_printf("\033[0;35mPas de reponse du serveur dans le delai 💀\n");
-				return (EXIT_FAILURE);
+				return ;
 			}
 			time_out++;
 			sleep(1);
@@ -101,7 +101,7 @@ static void	ft_send_text(char *str, int len, int pid)
 int	main(int argc, char **argv)
 {
 	int					pid;
-	struct sigaction	sact;
+	struct sigaction	sig;
 	
 	title_client();
 	if (argc != 3)
@@ -116,10 +116,10 @@ int	main(int argc, char **argv)
 		return(1);
 	}
 	sigemptyset(&sact.sa_mask);
-	sact.sa_flags = SA_SIGINFO;
-	sact.sa_sigaction = ft_sig_handler;
-	sigaction(SIGUSR1, &sact, 0);
-	sigaction(SIGUSR2, &sact, 0);
+	sig.sa_flags = SA_SIGINFO;
+	sig.sa_sigaction = ft_sig_handler;
+	sigaction(SIGUSR1, &sig, 0);
+	sigaction(SIGUSR2, &sig, 0);
 	ft_send_text(argv[2], ft_strlen(argv[2]), pid);
 	return (0);
 }

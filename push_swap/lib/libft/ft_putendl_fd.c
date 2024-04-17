@@ -1,25 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: khuynh <khuynh@student.42.fr>              +#+  +:+       +#+        */
+/*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 01:57:11 by khuynh            #+#    #+#             */
-/*   Updated: 2022/04/13 01:59:49 by khuynh           ###   ########.fr       */
+/*   Created: 2023/10/12 21:33:36 by yonieva           #+#    #+#             */
+/*   Updated: 2023/10/12 21:34:32 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// Iterates the list ’lst’ and applies the function ’f’ 
-// on the content of each node.
-
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+void	ft_putendl_fd(char *str, int fd)
 {
-	while (lst)
+	if (str)
 	{
-		(*f)(lst->content);
-		lst = lst->next;
+		ft_putstr_fd(str, fd);
+		ft_putchar_fd('\n', fd);
 	}
 }

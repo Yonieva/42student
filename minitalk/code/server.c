@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   server_bonus.c                                     :+:      :+:    :+:   */
+/*   server.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 22:23:28 by yonieva           #+#    #+#             */
-/*   Updated: 2024/04/16 22:25:46 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/04/17 23:08:14 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,15 @@ void	ft_sig_handler(int sig, siginfo_t *sinfo, void *context)
 int	main(void)
 {
 	int					pid;
-	struct sigaction	sact;
+	struct sigaction	sig;
+	
 	title_server();
 	pid = getpid();
 	sigemptyset(&sact.sa_mask);
-	sact.sa_flags = SA_SIGINFO;
-	sact.sa_sigaction = ft_sig_handler;
-	sigaction(SIGUSR1, &sact, 0);
-	sigaction(SIGUSR2, &sact, 0);
+	sig.sa_flags = SA_SIGINFO;
+	sig.sa_sigaction = ft_sig_handler;
+	sigaction(SIGUSR1, &sig, 0);
+	sigaction(SIGUSR2, &sig, 0);
 	ft_printf("PID : %d\n", pid);
 	ft_printf("Serveur en attente de signal ...\n");
 	while (1)
