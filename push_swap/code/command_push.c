@@ -6,13 +6,13 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:44:05 by yonieva           #+#    #+#             */
-/*   Updated: 2024/04/24 15:13:07 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/04/28 17:54:49 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/push_swap.h"
 
-static void	push(t_stack_node **dst, t_stack_node **src)
+static void	push(t_stack_node **dst, t_stack_node **src)//pousse un nœud supérieur, d'une pile au nœud supérieur d'une autre
 {
 	t_stack_node	*push_node;
 

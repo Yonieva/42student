@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:39:59 by yonieva           #+#    #+#             */
-/*   Updated: 2024/04/24 15:57:15 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/04/28 18:31:09 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	sort_three(t_stack_node **a);
 /* ************************************************************************** */
 /*STACK_TOOLS*/
 t_stack_node	*find_last(t_stack_node *stack);
-
+t_stack_node	*find_max(t_stack_node *stack);
 
 
 

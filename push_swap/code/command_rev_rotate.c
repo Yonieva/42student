@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rev_rotate.c                                       :+:      :+:    :+:   */
+/*   command_rev_rotate.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:47:05 by yonieva           #+#    #+#             */
-/*   Updated: 2024/04/22 15:48:08 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/04/24 16:48:19 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/push_swap.h"
 
-static void rev_rotate(t_stack_node **stack) // Définit une fonction qui fait pivoter le nœud du bas d'une pile vers le sommet
+static void rev_rotate(t_stack_node **stack) //fait pivoter le nœud du bas d'une pile vers le sommet
 {
-    t_stack_node *last; // Pour stocker le pointeur vers le dernier nœud
+    t_stack_node *last; 
 
-    if (!*stack || !(*stack)->next) // Vérifie si la pile est vide, ou s'il y a un seul nœud
+    if (!*stack || !(*stack)->next) 
         return;
     last = find_last(*stack);
-    last->prev->next = NULL; // Affecte à l'attribut `next` du nœud précédent lui-même, `NULL` le définissant efficacement comme le dernier nœud actuel
-    last->next = *stack; // Affecte à son propre attribut `next` le sommet de la pile
-    last->prev = NULL; // Le détache du nœud précédent
-    *stack = last; // Achève son ajout au sommet de la pile, et détient désormais le pointeur vers le sommet
-    last->next->prev = last; // Met à jour le dernier nœud actuel de la pile
+    last->prev->next = NULL; 
+    last->next = *stack; 
+    last->prev = NULL; 
+    *stack = last; 
+    last->next->prev = last; 
 }
 
 void rra(t_stack_node **a, bool print) // Fait pivoter le bas de `a` vers le sommet de la pile et imprime l'instruction
