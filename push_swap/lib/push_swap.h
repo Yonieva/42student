@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:39:59 by yonieva           #+#    #+#             */
-/*   Updated: 2024/04/28 18:31:09 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/05/06 17:05:48 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void    sa(t_stack_node	**a, bool print);
 void	sb(t_stack_node **b, bool print);
 void	ss(t_stack_node **a, t_stack_node **b, bool print);
 
-/*COMMANDES SORT_STACK*/
+/*COMMANDES SORT_STACK + ALGO TURC*/
 static void rotate_both(t_stack_node **a,
 						t_stack_node **b,
 						t_stack_node *cheapest_node);
@@ -73,13 +73,23 @@ static void rev_rotate_both(t_stack_node **a,
 static void move_a_to_b(t_stack_node **a, t_stack_node **b);                              
 static void	move_b_to_a(t_stack_node **a, t_stack_node **b);
 static void	min_on_top(t_stack_node **a);
-void	sort_stacks(t_stack_node **a, t_stack_node **b);
 void	sort_three(t_stack_node **a);
+void	sort_stacks(t_stack_node **a, t_stack_node **b);
 /* ************************************************************************** */
 /*STACK_TOOLS*/
-t_stack_node	*find_last(t_stack_node *stack);
 t_stack_node	*find_max(t_stack_node *stack);
-
+t_stack_node	*find_min(t_stack_node *stack);
+bool    stack_sorted(t_stack_node *stack);
+int     stack_len(t_stack_node *stack);
+/* ************************************************************************** */
+/*STACK_INIT*/
+static long ft_atol(const char *s);
+static void append_node(t_stack_node **stack, int n);
+void        init_stack_a(t_stack_node **a, char **argv);
+t_stack_node    *get_cheapest(t_stack_node *stack);
+oid prep_for_push(t_stack_node **stack,
+						t_stack_node *top_node,
+						char stack_name);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:57:40 by yonieva           #+#    #+#             */
-/*   Updated: 2024/04/28 18:45:26 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/05/06 16:05:52 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,14 @@ void	sa(t_stack_node	**a, bool print) //Swap the first two nodes of stack `a` an
 {
 	swap(a);
 	if (!print)
-		ft_printf("sa\n");
+		ft_printf("\033[36msa\n");
 }
 
 void	sb(t_stack_node **b, bool print) //Swap the first two nodes of stack `b` and print the instruction
 {
 	swap(b);
 	if (!print)
-		ft_printf("sb\n");
+		ft_printf("\033[36msb\n");
 }
 
 void	ss(t_stack_node **a, t_stack_node **b, bool print) //Stimutaneously swap the first two nodes of the stack and print the instruction
@@ -44,5 +44,5 @@ void	ss(t_stack_node **a, t_stack_node **b, bool print) //Stimutaneously swap th
 	swap(a);
 	swap(b);
 	if (!print)
-		ft_printf("ss\n");
+		ft_printf("\033[36mss\n");
 }

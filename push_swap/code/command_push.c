@@ -6,13 +6,14 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:44:05 by yonieva           #+#    #+#             */
-/*   Updated: 2024/04/28 17:54:49 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/05/06 16:04:12 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/push_swap.h"
 
-static void	push(t_stack_node **dst, t_stack_node **src)//pousse un nœud supérieur, d'une pile au nœud supérieur d'une autre
+/*pousse un nœud supérieur, d'une pile au nœud supérieur d'une autre*/
+static void	push(t_stack_node **dst, t_stack_node **src)
 {
 	t_stack_node	*push_node;
 
@@ -40,12 +41,12 @@ void	pa(t_stack_node **a, t_stack_node **b, bool print)
 {
 	push(a, b);
 	if (!print)
-		ft_printf("pa\n");
+		ft_printf("\033[32mpa\n");
 }
 
 void	pb(t_stack_node **b, t_stack_node **a, bool print)
 {
 	push(b, a);
 	if (!print)
-		ift_printf("pb\n");
+		ift_printf("\033[32mpb\n");
 }

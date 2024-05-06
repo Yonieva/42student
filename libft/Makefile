@@ -37,16 +37,13 @@ SRC =	ft_isalpha.c\
 	get_next_line.c\
 	get_next_line_utils.c\
 	ft_printf.c\
-	add_ft.c
-
-
-BSOURCES =	ft_lstnew.c\
-		ft_lstadd_front.c\
-		ft_lstsize.c\
-		ft_lstlast.c
+	add_ft.c\
+	ft_lstnew.c\
+	ft_lstadd_front.c\
+	ft_lstsize.c\
+	ft_lstlast.c\
 
 OBJ = $(SRC:.c=.o)
-BOBJECTS = $(BSOURCES:.c=.o)
 
 CC = gcc  
 CFLAGS = -Wall -Wextra -Werror
@@ -60,14 +57,11 @@ all : $(NAME)
 $(NAME): $(OBJ)
 	$(AR) $(ARFLAGS) $(NAME) $(OBJ) 
 
-bonus: $(OBJ) $(BOBJECTS)
-	$(AR) -r $(NAME) $?
-
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
 
 clean:
-	rm -f $(OBJ) $(BOBJECTS)
+	rm -f $(OBJ)
 
 
 fclean: clean

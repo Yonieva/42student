@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:47:05 by yonieva           #+#    #+#             */
-/*   Updated: 2024/04/24 16:48:19 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/05/06 16:04:43 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void rev_rotate(t_stack_node **stack) //fait pivoter le nœud du bas d'un
 
     if (!*stack || !(*stack)->next) 
         return;
-    last = find_last(*stack);
+    last = ft_lstlast(*stack);
     last->prev->next = NULL; 
     last->next = *stack; 
     last->prev = NULL; 
@@ -30,14 +30,14 @@ void rra(t_stack_node **a, bool print) // Fait pivoter le bas de `a` vers le som
 {
     rev_rotate(a);
     if (!print)
-        ft_printf("rra\n");
+        ft_printf("\033[33mrra\n");
 }
 
 void rrb(t_stack_node **b, bool print) // Fait pivoter le bas de `b` vers le sommet de la pile et imprime l'instruction
 {
     rev_rotate(b);
     if (!print)
-        ft_printf("rrb\n");
+        ft_printf("\033[33mrrb\n");
 }
 
 void rrr(t_stack_node **a, t_stack_node **b, bool print) // Fait pivoter simultanément les nœuds du bas des deux piles vers le sommet de leurs piles, réduisant de moitié le coût des instructions
@@ -45,5 +45,5 @@ void rrr(t_stack_node **a, t_stack_node **b, bool print) // Fait pivoter simulta
     rev_rotate(a);
     rev_rotate(b);
     if (!print)
-        ft_printf("rrr\n");
+        ft_printf("\033[33mrrr\n");
 }
