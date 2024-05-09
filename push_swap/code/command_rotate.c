@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   command_rotate .c                                  :+:      :+:    :+:   */
+/*   command_rotate.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:51:08 by yonieva           #+#    #+#             */
-/*   Updated: 2024/05/06 16:04:51 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/05/09 20:25:20 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void rotate(t_stack_node **stack) // Fait pivoter le nœud du sommet d'un
 
     if (!*stack || !(*stack)->next)
         return;
-    last_node = ft_lstlast(*stack);
+    last_node = find_last(*stack);
     last_node->next = *stack;
     *stack = (*stack)->next;
     (*stack)->prev = NULL;
@@ -47,13 +47,6 @@ void rr(t_stack_node **a, t_stack_node **b, bool print) // Fait pivoter simultan
     if (!print)
         ft_printf("\033[33mrr\n");
 }
-
-
-
-
-
-
-
 
 /*Avant la rotation :
 

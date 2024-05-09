@@ -6,17 +6,27 @@
 #    By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/08 15:57:41 by yonieva           #+#    #+#              #
-#    Updated: 2024/04/08 16:47:07 by yonieva          ###   ########.fr        #
+#    Updated: 2024/05/09 20:54:02 by yonieva          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRCFILES = push_swap.c
-
+SRCFILES = main.c\
+	a_to_b.c\
+	b_to_a.c\
+	command_push.c\
+	command_rev_rotate.c\
+	command_rotate.c\
+	command_sort.c\
+	command_swap.c\
+	free_error.c\
+	stack_init.c\
+	stack_tools.c\
+		
 OBJS = ${addprefix ./obj/, ${SRCFILES:.c=.o}}
 
-DEP_CLIENT = ${OBJS_CLIENT:.o=.d}
+DEP = ${OBJS:.o=.d}
 
 CFLAGS = -Wall -Werror -Wextra 
 LIB	   = -L../lib/libft/ -lft
@@ -35,10 +45,9 @@ BOLDRED=     \033[1m\033[31m
 BOLDWHITE=   \033[1m\033[37m
 BOLDGREEN=   \033[1m\033[32m
 
+all : ${NAME} 
 
-all: ${NAME} 
-
--include ${DEP_CLIENT}
+-include ${DEP}
 
 ./obj/%.o: ./%.c
 	@mkdir -p ${@D}
@@ -58,7 +67,7 @@ ${NAME}: ${OBJS}
 	@echo "${YELLOW}                       / _ \| |/ /                           ${RS}"              
 	@echo "${YELLOW}                      | | | | ' /                            ${RS}"              
 	@echo "${YELLOW}                      | |_| | . \                            ${RS}"              
-	@echo "${YELLOW}                       \___/|_|\_\        					 ${RS}"
+	@echo "${YELLOW}                       \___/|_|\_\        					 													${RS}"
 	@echo "\n\n"
 	@echo "${GREEN}Push_Swap compilé avec succès.\n\n"
 
@@ -72,7 +81,7 @@ clean:
 	@echo "\n\n"
 
 fclean: clean
-	@rm -f ${NAMECLT}
+	@rm -f ${NAME}
 	@make fclean -C ../lib/libft/
 
 re: fclean all

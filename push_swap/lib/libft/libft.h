@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/24 14:58:11 by yonieva           #+#    #+#             */
-/*   Updated: 2024/02/17 15:48:20 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/05/09 19:22:09 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,12 @@
 # include <fcntl.h>
 # include <stdarg.h>
 # define BUFFER_SIZE 1
+
+typedef struct s_list
+{
+	void			*content;
+	struct s_list	*next;
+}					t_list;
 /*--------------------------------AFFICHAGE-----------------------------------*/
 void	ft_putchar_fd(char c, int fd);/*affiche char c sur sortie fd*/
 void	ft_putstr_fd(char *str, int fd);/*affcihe str sur sortie fd*/

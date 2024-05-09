@@ -38,8 +38,7 @@ SRC =	ft_isalpha.c\
 	get_next_line_utils.c\
 	ft_printf.c\
 	add_ft.c\
-
-
+	ft_lstlast.c\
 
 BSOURCES =	ft_lstnew.c\
 		ft_lstadd_front.c\

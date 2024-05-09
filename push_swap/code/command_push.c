@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/08 15:44:05 by yonieva           #+#    #+#             */
-/*   Updated: 2024/05/06 16:04:12 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/05/09 19:03:30 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,5 @@ void	pb(t_stack_node **b, t_stack_node **a, bool print)
 {
 	push(b, a);
 	if (!print)
-		ift_printf("\033[32mpb\n");
+		ft_printf("\033[32mpb\n");
 }

@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:47:05 by yonieva           #+#    #+#             */
-/*   Updated: 2024/05/06 16:04:43 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/05/09 20:25:31 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void rev_rotate(t_stack_node **stack) //fait pivoter le nœud du bas d'un
 
     if (!*stack || !(*stack)->next) 
         return;
-    last = ft_lstlast(*stack);
+    last = find_last(*stack);
     last->prev->next = NULL; 
     last->next = *stack; 
     last->prev = NULL; 
