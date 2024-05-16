@@ -6,13 +6,14 @@
 #    By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/08 15:57:41 by yonieva           #+#    #+#              #
-#    Updated: 2024/05/09 20:54:02 by yonieva          ###   ########.fr        #
+#    Updated: 2024/05/13 18:20:21 by yonieva          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRCFILES = main.c\
+SRCFILES = sort_stack.c\
+	main.c\
 	a_to_b.c\
 	b_to_a.c\
 	command_push.c\
@@ -23,7 +24,8 @@ SRCFILES = main.c\
 	free_error.c\
 	stack_init.c\
 	stack_tools.c\
-		
+	split_modified.c
+
 OBJS = ${addprefix ./obj/, ${SRCFILES:.c=.o}}
 
 DEP = ${OBJS:.o=.d}

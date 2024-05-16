@@ -12,35 +12,40 @@
 
 #include "../lib/push_swap.h"
 
-static void	set_target_b(t_stack_node *a, t_stack_node *b) //Define a function that sets for the current `a` node, its target node from stack `a`
+//détermine pour chaque nœud de la pile b le nœud cible de la pile a 
+//auquel il doit être poussé, en cherchant le nœud dans la pile a 
+//ayant la valeur la plus proche et inférieure à celle du nœud actuel de b.
+static void	set_target_b(t_stack_node *a, t_stack_node *b)
 {
-	t_stack_node	*current_a; //To store the pointer to the current `a` node
-	t_stack_node	*target_node; //To store the pointer of the target node for `b` node
-	long			best_match_index; //To store the "closest bigger" number so far
+	t_stack_node	*current_a;
+	t_stack_node	*target_node;
+	long			best_match_index;
 
 	while (b)
 	{
-		best_match_index = LONG_MAX; //Set the current best match to the max long
-		current_a = a; //Assign the pointer to point to the current `a` node
-		while (current_a) //While the pointer is not set to NULL
+		best_match_index = LONG_MAX;
+		current_a = a;
+		while (current_a)
 		{
-			if (current_a->nbr > b->nbr 
-				&& current_a->nbr < best_match_index) //Check if the `a` node's value is bigger than `b` node, && smaller than the "closest bigger" so far
+			if (current_a->nbr > b->nbr
+				&& current_a->nbr < best_match_index)
 			{
-				best_match_index = current_a->nbr; //Set the best match as the value in the current `a` node
-				target_node = current_a; //Set `b` node's target node pointer to point to the current `a` node
+				best_match_index = current_a->nbr;
+				target_node = current_a;
 			}
-			current_a = current_a->next; //Move to the next `a` node for processing
+			current_a = current_a->next;
 		}
-		if (best_match_index == LONG_MAX) //If the best match value has not changed
-			b->target_node = find_min(a); //Set `b` node's target node pointer to point to the smallest number in stack `a`
+		if (best_match_index == LONG_MAX)
+			b->target_node = find_min(a);
 		else
-			b->target_node = target_node; //If the best match value has been updated, then we have a target node for the current `b` node
-		b = b->next; //Move to the next `b` node for processing
+			b->target_node = target_node;
+		b = b->next;
 	}
 }
 
-void	init_nodes_b(t_stack_node *a, t_stack_node *b) //Define a function that prepares the nodes for pushing `b` to `a`
+//initialiser les nœuds des piles a et b, en leur attribuant 
+//des index et en déterminant leurs nœuds cibles respectifs.
+void	init_nodes_b(t_stack_node *a, t_stack_node *b)
 {
 	current_index(a);
 	current_index(b);
