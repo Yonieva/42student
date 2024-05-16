@@ -12,7 +12,7 @@
 
 #include "../lib/push_swap.h"
 
-static void	swap(t_stack_node **head)
+static void	swap(t_stack **head)
 //échange les positions du nœud en haut et du second nœud d'une pile
 {
 	if (!*head || !(*head)->next)
@@ -27,7 +27,7 @@ static void	swap(t_stack_node **head)
 }
 
 //Swap the first two nodes of stack `a`
-void	sa(t_stack_node **a, bool print)
+void	sa(t_stack **a, bool print)
 {
 	swap(a);
 	if (!print)
@@ -35,7 +35,7 @@ void	sa(t_stack_node **a, bool print)
 }
 
 //Swap the first two nodes of stack `b`
-void	sb(t_stack_node **b, bool print)
+void	sb(t_stack **b, bool print)
 {
 	swap(b);
 	if (!print)
@@ -43,7 +43,7 @@ void	sb(t_stack_node **b, bool print)
 }
 
 //Stimutaneously swap the first two nodes a b
-void	ss(t_stack_node **a, t_stack_node **b, bool print)
+void	ss(t_stack **a, t_stack **b, bool print)
 {
 	swap(a);
 	swap(b);

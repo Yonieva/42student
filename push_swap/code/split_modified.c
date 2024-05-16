@@ -59,7 +59,7 @@ static char	*get_next_word(char *s, char c)
 	return (next_word);
 }
 
-char **split_modified(char *s, char c)
+char	**split_modified(char *s, char c)
 {
 	int		words_count;
 	char	**result_array;

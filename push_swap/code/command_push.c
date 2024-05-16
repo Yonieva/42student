@@ -13,9 +13,9 @@
 #include "../lib/push_swap.h"
 
 /*pousse un nœud supérieur, d'une pile au nœud supérieur d'une autre*/
-static void	push(t_stack_node **dst, t_stack_node **src)
+static void	push(t_stack **dst, t_stack **src)
 {
-	t_stack_node	*push_node;
+	t_stack	*push_node;
 
 	if (!*src)
 		return ;
@@ -37,14 +37,14 @@ static void	push(t_stack_node **dst, t_stack_node **src)
 	}
 }
 
-void	pa(t_stack_node **a, t_stack_node **b, bool print)
+void	pa(t_stack **a, t_stack **b, bool print)
 {
 	push(a, b);
 	if (!print)
 		ft_printf("pa\n");
 }
 
-void	pb(t_stack_node **b, t_stack_node **a, bool print)
+void	pb(t_stack **b, t_stack **a, bool print)
 {
 	push(b, a);
 	if (!print)

@@ -13,9 +13,9 @@
 #include "../lib/push_swap.h"
 
 //fait pivoter le nœud du sommet d'une pile vers le bas
-static void	rotate(t_stack_node **stack)
+static void	rotate(t_stack **stack)
 {
-	t_stack_node	*last_node;
+	t_stack	*last_node;
 
 	if (!*stack || !(*stack)->next)
 		return ;
@@ -28,7 +28,7 @@ static void	rotate(t_stack_node **stack)
 }
 
 //fait pivoter le nœud supérieur `a` vers le bas de la pile
-void	ra(t_stack_node **a, bool print)
+void	ra(t_stack **a, bool print)
 {
 	rotate(a);
 	if (!print)
@@ -36,7 +36,7 @@ void	ra(t_stack_node **a, bool print)
 }
 
 //fait pivoter le nœud supérieur `b` vers le bas de la pile
-void	rb(t_stack_node **b, bool print)
+void	rb(t_stack **b, bool print)
 {
 	rotate(b);
 	if (!print)
@@ -44,7 +44,7 @@ void	rb(t_stack_node **b, bool print)
 }
 
 //fait pivoter simultanément les nœuds supérieurs `a` et `b`vers le bas
-void	rr(t_stack_node **a, t_stack_node **b, bool print)
+void	rr(t_stack **a, t_stack **b, bool print)
 {
 	rotate(a);
 	rotate(b);

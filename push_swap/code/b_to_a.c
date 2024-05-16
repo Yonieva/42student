@@ -15,11 +15,11 @@
 //détermine pour chaque nœud de la pile b le nœud cible de la pile a 
 //auquel il doit être poussé, en cherchant le nœud dans la pile a 
 //ayant la valeur la plus proche et inférieure à celle du nœud actuel de b.
-static void	set_target_b(t_stack_node *a, t_stack_node *b)
+static void	set_target_b(t_stack *a, t_stack *b)
 {
-	t_stack_node	*current_a;
-	t_stack_node	*target_node;
-	long			best_match_index;
+	t_stack	*current_a;
+	t_stack	*target_node;
+	long	best_match_index;
 
 	while (b)
 	{
@@ -45,7 +45,7 @@ static void	set_target_b(t_stack_node *a, t_stack_node *b)
 
 //initialiser les nœuds des piles a et b, en leur attribuant 
 //des index et en déterminant leurs nœuds cibles respectifs.
-void	init_nodes_b(t_stack_node *a, t_stack_node *b)
+void	init_nodes_b(t_stack *a, t_stack *b)
 {
 	current_index(a);
 	current_index(b);

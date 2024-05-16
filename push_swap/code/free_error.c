@@ -30,7 +30,7 @@ int	error_syntax(char *str_n)
 }
 
 // fonction qui vérifie les doublons des nombres d'entrée dans la pile `a`
-int	error_duplicate(t_stack_node *a, int n)
+int	error_duplicate(t_stack *a, int n)
 {
 	if (!a)
 		return (0);
@@ -44,10 +44,10 @@ int	error_duplicate(t_stack_node *a, int n)
 }
 
 // Définit une fonction pour libérer une pile en cas d'erreurs
-void	free_stack(t_stack_node **stack)
+void	free_stack(t_stack **stack)
 {
-	t_stack_node	*current;
-	t_stack_node	*tmp;
+	t_stack	*current;
+	t_stack	*tmp;
 
 	if (!stack)
 		return ;
@@ -64,7 +64,7 @@ void	free_stack(t_stack_node **stack)
 
 // Définit une fonction qui, lorsqu'elle rencontre une erreur unique,
 //libère la pile et affiche un message d'erreur
-void	free_errors(t_stack_node **a)
+void	free_errors(t_stack	**a)
 {
 	free_stack(a);
 	ft_printf("\033[31mErreur\n");

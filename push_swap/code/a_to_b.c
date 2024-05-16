@@ -14,7 +14,7 @@
 
 //attribue un index à chaque nœud de la pile stack, 
 //en marquant ceux situés au-dessus de la médiane.
-void	current_index(t_stack_node *stack)
+void	current_index(t_stack *stack)
 {
 	int	i;
 	int	median;
@@ -38,11 +38,11 @@ void	current_index(t_stack_node *stack)
 //détermine pour chaque nœud de la pile a 
 //le nœud cible de la pile b auquel il doit être poussé, 
 //en fonction de la proximité des valeurs et de leur position.
-static void	set_target_a(t_stack_node *a, t_stack_node *b)
+static void	set_target_a(t_stack *a, t_stack *b)
 {
-	t_stack_node	*current_b;
-	t_stack_node	*target_node;
-	long			best_match_index;
+	t_stack	*current_b;
+	t_stack	*target_node;
+	long	best_match_index;
 
 	while (a)
 	{
@@ -68,7 +68,7 @@ static void	set_target_a(t_stack_node *a, t_stack_node *b)
 
 //calcule le coût de poussée pour chaque nœud de la pile a,
 //en considérant sa position, la médiane et le nœud cible.
-static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
+static void	cost_analysis_a(t_stack *a, t_stack *b)
 {
 	int	len_a;
 	int	len_b;
@@ -90,10 +90,10 @@ static void	cost_analysis_a(t_stack_node *a, t_stack_node *b)
 
 //marque le nœud de la pile stack ayant le coût de poussée 
 //le moins élevé comme le moins cher.
-void	set_cheapest(t_stack_node *stack)
+void	set_cheapest(t_stack *stack)
 {
-	long			cheapest_value;
-	t_stack_node	*cheapest_node;
+	long	cheapest_value;
+	t_stack	*cheapest_node;
 
 	if (!stack)
 		return ;
@@ -112,7 +112,7 @@ void	set_cheapest(t_stack_node *stack)
 
 //appelle les fonctions précédentes pour initialiser 
 //les nœuds de la pile a en fonction des propriétés et des coûts de poussée.
-void	init_nodes_a(t_stack_node *a, t_stack_node *b)
+void	init_nodes_a(t_stack *a, t_stack *b)
 {
 	current_index(a);
 	current_index(b);
