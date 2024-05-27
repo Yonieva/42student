@@ -61,24 +61,15 @@ static void	move_b_to_a(t_stack **a, t_stack **b)
 	pa(a, b, false);
 }
 
-//static void	min_on_top(t_stack_node **a)
-//{
-//	while ((*a)->nbr != find_min(*a)->nbr)
-//	{
-//		if (find_min(*a)->above_median)
-//			ra(a, false);
-//		else
-//			rra(a, false);
-//	}
-//}
-
 //Algo de tri turc au dela de 3 nodes
 void	sort_stacks(t_stack **a, t_stack **b)
 {
 	int	len_a;
 
 	len_a = stack_len(*a);
-	while (len_a-- > 3 && !stack_sorted(*a))
+	if (len_a-- > 3 && !stack_sorted(*a))
+		pb(b, a, false);
+	if (len_a-- > 3 && !stack_sorted(*a))
 		pb(b, a, false);
 	while (len_a-- > 3 && !stack_sorted(*a))
 	{
@@ -92,11 +83,5 @@ void	sort_stacks(t_stack **a, t_stack **b)
 		move_b_to_a(a, b);
 	}
 	current_index(*a);
-	while ((*a)->nbr != find_min(*a)->nbr)
-	{
-		if (find_min(*a)->above_median)
-			ra(a, false);
-		else
-			rra(a, false);
-	}
+	min_on_top(a);
 }

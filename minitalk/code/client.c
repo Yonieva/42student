@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 22:21:56 by yonieva           #+#    #+#             */
-/*   Updated: 2024/04/17 23:06:31 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/05/21 14:00:31 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ int	main(int argc, char **argv)
 		ft_printf("\033[0;35mPID ERRONE\n");
 		return(1);
 	}
-	sigemptyset(&sact.sa_mask);
+	sigemptyset(&sig.sa_mask);
 	sig.sa_flags = SA_SIGINFO;
 	sig.sa_sigaction = ft_sig_handler;
 	sigaction(SIGUSR1, &sig, 0);

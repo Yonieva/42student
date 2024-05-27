@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 22:23:28 by yonieva           #+#    #+#             */
-/*   Updated: 2024/04/17 23:08:36 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/05/21 14:01:34 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int	main(void)
 	
 	title_server();
 	pid = getpid();
-	sigemptyset(&sact.sa_mask);
+	sigemptyset(&sig.sa_mask);
 	sig.sa_flags = SA_SIGINFO;
 	sig.sa_sigaction = ft_sig_handler;
 	sigaction(SIGUSR1, &sig, 0);

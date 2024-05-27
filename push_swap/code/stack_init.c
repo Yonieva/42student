@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/06 17:01:58 by yonieva           #+#    #+#             */
-/*   Updated: 2024/05/15 19:43:06 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/05/27 17:10:21 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,39 +58,38 @@ static void	append_node(t_stack **stack, int n)
 	}
 }
 
-void	init_stack_a(t_stack **a, char **argv)
+void	init_stack_a(t_stack **a, char **tab)
 {
 	long			n;
 	int				i;
 
 	i = 0;
-	while (argv[i])
+	while (tab[i])
 	{
-		if (error_syntax(argv[i]))
-			free_errors(a);
-		n = ft_atol(argv[i]);
+		if (error_syntax(tab[i]))
+			free_errors(a, tab);
+		n = ft_atol(tab[i]);
 		if (n > INT_MAX || n < INT_MIN)
-			free_errors(a);
+			free_errors(a, tab);
 		if (error_duplicate(*a, (int)n))
-			free_errors(a);
+			free_errors(a, tab);
 		append_node(a, (int)n);
 		i++;
 	}
+	free_tab(tab);
 }
 
 t_stack	*get_cheapest(t_stack *stack)
 {
-	{
-		if (!stack)
-			return (NULL);
-		while (stack)
-		{
-			if (stack->cheapest)
-				return (stack);
-			stack = stack->next;
-		}
+	if (!stack)
 		return (NULL);
+	while (stack)
+	{
+		if (stack->cheapest)
+			return (stack);
+		stack = stack->next;
 	}
+	return (NULL);
 }
 
 void	prep_for_push(t_stack **stack,

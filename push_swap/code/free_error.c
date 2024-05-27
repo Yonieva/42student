@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/09 17:42:49 by yonieva           #+#    #+#             */
-/*   Updated: 2024/05/15 16:54:32 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/05/27 17:11:12 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,19 @@ int	error_duplicate(t_stack *a, int n)
 	return (0);
 }
 
+void	free_tab(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
+
 // Définit une fonction pour libérer une pile en cas d'erreurs
 void	free_stack(t_stack **stack)
 {
@@ -64,9 +77,10 @@ void	free_stack(t_stack **stack)
 
 // Définit une fonction qui, lorsqu'elle rencontre une erreur unique,
 //libère la pile et affiche un message d'erreur
-void	free_errors(t_stack	**a)
+void	free_errors(t_stack	**a, char **tab)
 {
 	free_stack(a);
-	ft_printf("\033[31mErreur\n");
+	free_tab(tab);
+	ft_printf("Erreur\n");
 	exit(1);
 }

@@ -6,14 +6,14 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 15:47:05 by yonieva           #+#    #+#             */
-/*   Updated: 2024/05/13 14:15:21 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/05/25 14:43:19 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../lib/push_swap.h"
 
 //fait pivoter le nœud du bas d'une pile vers le sommet
-static void	rev_rotate(t_stack	**stack)
+static void	rev_rotate(t_stack **stack)
 {
 	t_stack	*last;
 

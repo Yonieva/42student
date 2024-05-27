@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:39:59 by yonieva           #+#    #+#             */
-/*   Updated: 2024/05/15 15:22:45 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/05/27 17:11:24 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 # include <stdbool.h>
 # include <limits.h>
 
-char	**split_modified(char *s, char c);
 /* ************************************************************************** */
 /* ************************************************************************** */
 typedef struct s_stack_node
@@ -56,6 +55,7 @@ void	ss(t_stack **a, t_stack **b, bool print);
 /*COMMANDES SORT_STACK + ALGO TURC*/
 void	sort_three(t_stack **a);
 void	sort_stacks(t_stack **a, t_stack **b);
+void	min_on_top(t_stack **a);
 /* ************************************************************************** */
 /* ************************************************************************** */
 /*STACK_TOOLS*/
@@ -67,17 +67,19 @@ int		stack_len(t_stack *stack);
 /* ************************************************************************** */
 /* ************************************************************************** */
 /*STACK_INIT*/
-void	init_stack_a(t_stack **a, char **argv);
+void	init_stack_a(t_stack **a, char **tab);
 t_stack	*get_cheapest(t_stack *stack);
 void	prep_for_push(t_stack **stack, t_stack *top_node,
 			char stack_name);
+char	**add_tab(int argc, char **argv);
 /* ************************************************************************** */
 /* ************************************************************************** */
 /*ERROR*/
 int		error_syntax(char *str_n);
 int		error_duplicate(t_stack *a, int n);
 void	free_stack(t_stack **stack);
-void	free_errors(t_stack **a);
+void	free_errors(t_stack **a, char **tab);
+void	free_tab(char **tab);
 /* ************************************************************************** */
 /* ************************************************************************** */
 /*INIT A TO B*/

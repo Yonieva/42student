@@ -6,7 +6,7 @@
 #    By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/08 15:57:41 by yonieva           #+#    #+#              #
-#    Updated: 2024/05/13 18:20:21 by yonieva          ###   ########.fr        #
+#    Updated: 2024/05/27 16:51:50 by yonieva          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,14 +23,13 @@ SRCFILES = sort_stack.c\
 	command_swap.c\
 	free_error.c\
 	stack_init.c\
-	stack_tools.c\
-	split_modified.c
+	stack_tools.c
 
 OBJS = ${addprefix ./obj/, ${SRCFILES:.c=.o}}
 
 DEP = ${OBJS:.o=.d}
 
-CFLAGS = -Wall -Werror -Wextra 
+CFLAGS = -Wall -Werror -Wextra -g
 LIB	   = -L../lib/libft/ -lft
 
 RS=        	 \033[0m
