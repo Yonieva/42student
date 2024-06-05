@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 14:48:50 by yonieva           #+#    #+#             */
-/*   Updated: 2024/06/05 15:28:49 by yonieva          ###   ########.fr       */
+/*   Created: 2024/06/05 14:49:56 by yonieva           #+#    #+#             */
+/*   Updated: 2024/06/05 15:28:39 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-
-int main (int ac, char **av)
+void    check_arg(char *arg)
 {
-    int i;
-
-    i = 1;
-    if (ac == 6)
+    int i = 0;
+    while(arg[i])
     {
-        while (i <= 6)
-        {
-            check_arg(av[i]);
+        if (ft_isdigit(arg[i]))
             i++;
-        }
-    
-
-
-
-
+        else 
+            ft_error(1);
     }
-
-    else
-        ft_error(1);
-    return(0)
-
 }

@@ -1,39 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonieva <yonieva@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/05 14:48:50 by yonieva           #+#    #+#             */
-/*   Updated: 2024/06/05 15:28:49 by yonieva          ###   ########.fr       */
+/*   Created: 2024/06/05 14:58:24 by yonieva           #+#    #+#             */
+/*   Updated: 2024/06/05 15:28:46 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-
-int main (int ac, char **av)
+void ft_error(int index)
 {
-    int i;
-
-    i = 1;
-    if (ac == 6)
+    if (index == 1)
     {
-        while (i <= 6)
-        {
-            check_arg(av[i]);
-            i++;
-        }
-    
-
-
-
-
+        printf("Erreur(s) dans les arguments saisies par l'utilisateur");
+        return (EXIT_FAILURE)
     }
-
-    else
-        ft_error(1);
-    return(0)
-
 }

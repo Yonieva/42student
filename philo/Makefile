@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+         #
+#    By: yonieva <yonieva@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 15:26:27 by yonieva           #+#    #+#              #
-#    Updated: 2024/06/03 15:55:04 by yonieva          ###   ########.fr        #
+#    Updated: 2024/06/05 15:28:57 by yonieva          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,3 +73,4 @@ re: fclean all
 
 .PHONY: all clean fclean re
 
+@make fclean -C ../lib/libft/
