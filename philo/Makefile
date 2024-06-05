@@ -13,7 +13,7 @@
 
 NAME = philo
 
-SRCFILES = main.c
+SRCFILES = ./code/main.c
 
 
 OBJS = ${addprefix ./obj/, ${SRCFILES:.c=.o}}
@@ -53,21 +53,13 @@ ${NAME}: ${OBJS}
 	@echo "${YELLOW}                      | | | | ' /                            ${RS}"              
 	@echo "${YELLOW}                      | |_| | . \                            ${RS}"              
 	@echo "${YELLOW}                       \___/|_|\_\      					 ${RS}"
-	@echo "${YELLOW}        	 __       ___,.-------..__          			 ${RS}"
-	@echo "${YELLOW}        //\\ _,-''                `'--._ //\\                ${RS}"
-	@echo "${YELLOW}        \\ ;'                           `: //                ${RS}"
-	@echo "${YELLOW}         `                                '                  ${RS}"
-	@echo "${YELLOW}           :.                           ,;                   ${RS}"
-	@echo "${YELLOW}            `.`--.___           ___.--','                    ${RS}"
-	@echo "${YELLOW}              `.     ``-------''     ,'                      ${RS}"
-	@echo "${YELLOW}                 -.               ,-                         ${RS}"
-	@echo "${YELLOW}                    `-._______.-'  	                         ${RS}"
-	@echo "\n\n"
+	@echo "\n"
 	@echo "${GREEN}Projet Philosopher compilé avec succès.\n\n"
 
 	
 clean:
 	@rm -rf obj/
+	@rm -rf philo
 	@echo "\n\n"
 	@echo "${BOLDGREEN}Tous les objets ont été supprimés correctement.${RS}"
 	@echo "${YELLOW}Retour au terminal.${RS}"
@@ -75,7 +67,7 @@ clean:
 
 fclean: clean
 	@rm -f ${NAME}
-	@make fclean -C ../lib/libft/
+	@rm -rf philo
 
 re: fclean all
 
