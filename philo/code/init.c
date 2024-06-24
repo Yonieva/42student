@@ -3,23 +3,11 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonieva <yonieva@student.42.fr>            +#+  +:+       +#+        */
+/*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:49:56 by yonieva           #+#    #+#             */
-/*   Updated: 2024/06/05 15:28:39 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/06/19 15:44:35 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
-
-void    check_arg(char *arg)
-{
-    int i = 0;
-    while(arg[i])
-    {
-        if (ft_isdigit(arg[i]))
-            i++;
-        else 
-            ft_error(1);
-    }
-}
