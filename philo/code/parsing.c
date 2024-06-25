@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:55:13 by yonieva           #+#    #+#             */
-/*   Updated: 2024/06/19 16:05:06 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/06/24 16:28:14 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ const char *valid_input(const char *str)
     const char  *number;
 
     len = 0;
-    while (*str == 32 || *str == '\t' || *str == '\n')
+    while (*str == 32 || (*str >= 9 && *str <= 13))
         str++;
     if (*str == '+')
         str++;
@@ -46,7 +46,7 @@ long ft_atol(const char *str)
         ft_error(4);
     return (num);
 }
-
+/*input en milisecond, conversion en microsecond pour sleep()*/
 void    parsing(t_table *table)
 {
     table->nb_philo = ft_atol(av[1]);
