@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:48:50 by yonieva           #+#    #+#             */
-/*   Updated: 2024/06/19 14:48:56 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/07/01 14:53:38 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main (int ac, char **av)
     if (ac == 5 || ac == 6)
     {
         parsing(&table, av);
-        init(&table);
+        data_init(&table);
         diner_start(&table);
         clean(&table);
     }

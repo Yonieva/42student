@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:55:13 by yonieva           #+#    #+#             */
-/*   Updated: 2024/06/24 16:28:14 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/07/02 15:23:51 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ long ft_atol(const char *str)
         ft_error(4);
     return (num);
 }
-/*input en milisecond, conversion en microsecond pour sleep()*/
+/*input en milisecond, conversion en microsecond pour usleep()*/
 void    parsing(t_table *table)
 {
     table->nb_philo = ft_atol(av[1]);
@@ -62,6 +62,3 @@ void    parsing(t_table *table)
     else
         table->nb_meals_limit = -1;
 }
-
-
-
