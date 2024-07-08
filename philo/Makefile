@@ -3,18 +3,23 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonieva <yonieva@student.42.fr>            +#+  +:+       +#+         #
+#    By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 15:26:27 by yonieva           #+#    #+#              #
-#    Updated: 2024/06/05 15:28:57 by yonieva          ###   ########.fr        #
+#    Updated: 2024/07/08 16:05:00 by yonieva          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = philo
 
-SRCFILES = ./code/main.c
-
+SRCFILES = ./code/main.c\
+	./code/diner.c\
+	./code/error.c\
+	./code/init.c\
+	./code/mutex_lock.c\
+	./code/parsing.c\
+	./code/synchro.c\
 
 OBJS = ${addprefix ./obj/, ${SRCFILES:.c=.o}}
 
@@ -72,5 +77,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re
-
-@make fclean -C ../lib/libft/

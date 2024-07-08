@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:49:56 by yonieva           #+#    #+#             */
-/*   Updated: 2024/07/02 15:20:51 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/07/08 15:44:49 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ static void assign_forks(t_philo *philo, t_fork *fork, int philo_position)
 {
     int philo_nbr;
 
-    philo_nbr = philo->table->philo_nbr;
+    philo_nbr = philo->data->nb_philo;
     philo->first_fork = &fork[(philo_position + 1) % philo_nbr];
     philo->second_fork = &fork[philo_position];
     if (philo->position % 2 == 0)
     {
-        philo_first_fork = &fork[philo_position];
+        philo->first_fork = &fork[philo_position];
         philo->second_fork = &fork[(philo_position + 1) % philo_nbr];
     }
 }
 
-static void init_philo(t_table *table)
+static void init_philo(t_data *table)
 {
     int i;
     t_philo *philo;

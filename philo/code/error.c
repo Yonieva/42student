@@ -16,31 +16,18 @@
 void ft_error(int index)
 {
     if (index == 1)
-    {
         printf("\033[33m🚨Erreur dans le nombre d arguments saisis🚨\n");
-        return (EXIT_FAILURE);
-    }
     if (index == 2)
-    {
         printf("\033[33m🚨Une valeur saisie est negative !🚨\n");
-        return (EXIT_FAILURE);
-    }
     if (index == 3)
-    {
         printf("\033[33m🚨Une valeur saisie n'est pas un nombre !🚨\n");
-        return (EXIT_FAILURE);
-    }
     if (index == 4)
-    {
         printf("\033[33m🚨Une valeur saisie depasse la limite INT_MAX🚨\n");
-        return (EXIT_FAILURE);
-    }
     if (index == 5)
-    {
         printf("\033[33m🚨Une valeur de temps depasse la limite 60ms🚨\n");
-        return (EXIT_FAILURE);
-    }
-    
+    if (index == 6)
+        return (exit(EXIT_FAILURE));
+    return (exit(EXIT_FAILURE));
 }
 
 /*ERREURS DE MEMOIRE****************************************************/
@@ -52,7 +39,7 @@ void    *safe_malloc(size_t bytes)
     if (ptr == NULL)
     {
         printf("\033[33m🚨Erreur d allocation de memoire🚨\n");
-        return (EXIT_FAILURE);
+        ft_error(6);
     }
     return(ptr);
 }
@@ -65,25 +52,25 @@ static void error_mutex_or_pthread(int status)
     else
     {
         printf("\033[33m🚨Erreur de Mutex ou de Thread !🚨\n");
-        return (EXIT_FAILURE);
+        ft_error(6);
     }
 
 }
 
-void    safe_mutex(t_mtx *mutex, t_lexic lexic)
+void    safe_mutex(t_mutex *mutex, t_lexic lexic)
 {
     if (LOCK == lexic)
-        error_mutex(pthread_mutex_lock(mutex));
+        error_mutex_or_pthread(pthread_mutex_lock(mutex));
     else if (UNLOCK == lexic)
-        error_mutex(pthread_mutex_unlock(mutex));
+        error_mutex_or_pthread(pthread_mutex_unlock(mutex));
     else if (INIT == lexic)
-        error_mutex(pthread_mutex_init(mutex, NULL));
+        error_mutex_or_pthread(pthread_mutex_init(mutex, NULL));
     else if (DESTROY == lexic)
-        error_mutex(pthread_mutex_destroy(mutex));
+        error_mutex_or_pthread(pthread_mutex_destroy(mutex));
     else
     {
         printf("\033[33m🚨Erreur de Mutex !🚨\n");
-        return (EXIT_FAILURE);
+        ft_error(6);
     }
 }
 
@@ -91,14 +78,14 @@ void safe_thread(pthread_t *thread, void *(*foo)(void *),
     void *data, t_lexic lexic)
 {
     if (CREATE == lexic)
-        error_mutex_or_pthread(pthread_create(thread, NULL, foo, data), lexic);
+        error_mutex_or_pthread(pthread_create(thread, NULL, foo, data));
     else if (JOIN == lexic)
-        error_mutex_or_pthread(pthread_join(*thread, NULL), lexic);
+        error_mutex_or_pthread(pthread_join(*thread, NULL));
     else if (DETACH == lexic)
-        error_mutex_or_pthread(pthread_detach(*thread), lexic);
+        error_mutex_or_pthread(pthread_detach(*thread));
     else
     {
         printf("\033[33m🚨Erreur de Pthread !🚨\n");
-        return (EXIT_FAILURE);
+        ft_error(6);
     }
 }

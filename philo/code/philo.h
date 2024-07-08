@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:23:29 by yonieva           #+#    #+#             */
-/*   Updated: 2024/07/02 15:18:32 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/07/08 16:22:38 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,22 @@
 # include <unistd.h>
 # include <stdlib.h>
 # include <signal.h>
+# include <stdbool.h>
 # include <limits.h>
 # include <sys/time.h>
 # include <pthread.h>
 
 typedef pthread_mutex_t t_mutex;
+typedef struct s_data	t_data;
+/* ************************************************************************** */
+/* ************************************************************************** */
+typedef struct s_fork
+{
+	int			position;
+	t_mutex		fork;
+
+}	t_fork;
+/* ************************************************************************** */
 /* ************************************************************************** */
 typedef struct s_philo
 {
@@ -35,14 +46,8 @@ typedef struct s_philo
 	t_data		*data;
 }	t_philo;
 /* ************************************************************************** */
-typedef struct s_fork
-{
-	int			position;
-	t_mutex		fork;
-
-}	t_fork;
 /* ************************************************************************** */
-typedef struct s_data
+struct s_data
 {
 	long		nb_philo;
 	long		time_to_die;
@@ -55,8 +60,8 @@ typedef struct s_data
 	t_mutex		table_mutex;
 	t_fork		*fork;
 	t_philo		*philo;
-}	t_data;
-
+};
+/* ************************************************************************** */
 /* ************************************************************************** */
 typedef enum e_lexic
 {
@@ -69,8 +74,9 @@ typedef enum e_lexic
 	DETACH,
 }	t_lexic;
 /* ************************************************************************** */
+/* ************************************************************************** */
 /*Parsing*/
-	void    	parsing(t_table *table);
+	void    	parsing(t_data *table, char **av);
 	const char*	valid_input(const char *str);
 	long		ft_atol(const char *str);
 /*Init*/
@@ -78,8 +84,18 @@ typedef enum e_lexic
 /*Errors*/
 	void 	ft_error(int index);
 	void    *safe_malloc(size_t bytes);
-	void    safe_mutex(t_mtx *mutex, t_lexic lexic);
+	void    safe_mutex(t_mutex *mutex, t_lexic lexic);
 	void 	safe_thread(pthread_t *thread, void *(*foo)(void *),
-    void *data, t_lexic lexic);
-
+    			void *data, t_lexic lexic);
+/*Mutex locks*/
+	void    set_bool(t_mutex *mutex, bool *dest, bool value);
+	bool    get_bool(t_mutex *mutex, bool *value);
+	long    get_long(t_mutex *mutex, long *value);
+	void    set_long(t_mutex *mutex, long *dest, long value);
+	bool    diner_finished(t_data *table);
+/*Synchronisation*/
+	void 	wait_all_thread(t_data *table);
+	void    *diner_simulation(void *data);
+	void    diner_start(t_data *table);
+	
 #endif

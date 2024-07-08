@@ -20,34 +20,31 @@
     quand thread cree -> le philo begin !
     nous voulons que tout les philos start same time*/
 
-void    *dinner_simulation(void *data)
+void    *diner_simulation(void *data)
 {
     t_philo *philo;
 
     philo = (t_philo *)data;
-    wait_all_thread(philo-); //To do
+    wait_all_thread(philo->data);
     return (NULL);
 }   
 
-
-
-
-
-
-void    dinner_start(t_data *table)
+void    diner_start(t_data *table)
 {
     int i;
 
     i = 0;
     if (table->nb_meals_limit == 0)
         return ;
-    else if (table->nb_philo == 1)
+    //else if (table->nb_philo == 1)
     // to do 
     else
         while(i < table->nb_philo)
         {
-            safe_thread(&table->philo[i].thread_pos, dinner_simulation, 
-                &table->philo[i], CREATE)
+            safe_thread(&table->philo[i].thread_pos, diner_simulation, 
+                &table->philo[i], CREATE);
             i++;
         }
+    /*thread ready*/
+    set_bool(&table->table_mutex, &table->all_thread_ready, true);
 }
