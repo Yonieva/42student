@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:49:56 by yonieva           #+#    #+#             */
-/*   Updated: 2024/07/08 15:44:49 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/07/12 01:22:55 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,10 @@ static void init_philo(t_data *table)
     {
         philo = table->philo + i;
         philo->position = i + 1;
-        philo->max_meals = false;
+        philo->full = false;
         philo->nb_meals = 0;
         philo->data = table;
+        safe_mutex(&philo->philo_mutex, INIT);
         assign_forks(philo, table->fork, i);
         i++;
     } 
@@ -54,7 +55,10 @@ void    data_init(t_data *table)
     table->all_thread_ready = false;
     table->philo = safe_malloc(sizeof(t_philo) * table->nb_philo);
     table->fork = safe_malloc(sizeof(t_fork) * table->nb_philo);
+    table->thread_running_nb = 0;
+    
     safe_mutex(&table->table_mutex, INIT);
+    safe_mutex(&table->write_mutex, INIT);
     while (i < table->nb_philo)
     {
         safe_mutex(&table->fork[i].fork, INIT); // FREE MALLOC SI ERREUR

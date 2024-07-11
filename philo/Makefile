@@ -6,7 +6,7 @@
 #    By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 15:26:27 by yonieva           #+#    #+#              #
-#    Updated: 2024/07/08 16:05:00 by yonieva          ###   ########.fr        #
+#    Updated: 2024/07/12 00:07:56 by yonieva          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCFILES = ./code/main.c\
 	./code/mutex_lock.c\
 	./code/parsing.c\
 	./code/synchro.c\
+	./code/affichage.c\
 
 OBJS = ${addprefix ./obj/, ${SRCFILES:.c=.o}}
 

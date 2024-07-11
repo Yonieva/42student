@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:55:13 by yonieva           #+#    #+#             */
-/*   Updated: 2024/07/08 16:40:03 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/07/12 00:18:52 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,12 +53,12 @@ long ft_atol(const char *str)
 void    parsing(t_data *table, char **av)
 {
     table->nb_philo = ft_atol(av[1]);
-    table->time_to_die = ft_atol(av[2]) * 1000;
-    table->time_to_eat = ft_atol(av[3]) * 1000;
-    table->time_to_sleep = ft_atol(av[4]) * 1000;
-    if (table->time_to_die > 60000 
-        || table->time_to_eat > 60000
-        || table-> time_to_sleep > 60000)
+    table->time_to_die = ft_atol(av[2]) * 1e3;
+    table->time_to_eat = ft_atol(av[3]) * 1e3;
+    table->time_to_sleep = ft_atol(av[4]) * 1e3;
+    if (table->time_to_die < 6e4 
+        || table->time_to_eat < 6e4
+        || table-> time_to_sleep < 6e4)
         ft_error(5);
     if (av[5])
         table->nb_meals_limit = ft_atol(av[5]);
