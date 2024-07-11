@@ -6,7 +6,7 @@
 #    By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/16 22:22:02 by yonieva           #+#    #+#              #
-#    Updated: 2024/04/01 23:36:49 by yonieva          ###   ########.fr        #
+#    Updated: 2024/07/12 01:24:49 by yonieva          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ DEP_SERVER_BONUS = ${OBJS_SERVER_BONUS:.o=.d}
 CFLAGS = -Wall -Werror -Wextra 
 LIB	   = -L../lib/libft/ -lft
 
-
 RS=        \033[0m
 DARK=        \033[1;32m
 RED=        \033[31m
@@ -52,7 +51,6 @@ BOLDBLACK=    \033[1m\033[30m
 BOLDRED=    \033[1m\033[31m
 BOLDWHITE=    \033[1m\033[37m
 BOLDGREEN=    \033[1m\033[32m
-
 
 all: ${NAMECLT} ${NAMESERV} ${NAMECLTBONUS} ${NAMESERVBONUS}
 
