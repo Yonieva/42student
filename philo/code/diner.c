@@ -25,6 +25,20 @@ static void thinking(t_philo *philo)
     write_status(THINKING, philo, DEBUG_MODE);
 }
 
+void    *alone_philo(void *arg)
+{
+    t_philo *philo;
+
+    philo = (t_philo *)arg;
+    wait_all_thread(philo->data);
+    set_long(&philo->philo_mutex, &philo->time_last_meal, get_time(MILLISECOND));
+    increase_long(&philo->data->table_mutex, &philo->data->thread_running_nb);
+    write_status(TAKE_FIRST_FORK, philo, DEBUG_MODE);
+    while (!diner_finished(philo->data))
+        usleep(200);
+    return (NULL);
+}
+
 static void eat(t_philo *philo)
 {
     /*****************/
@@ -37,7 +51,8 @@ static void eat(t_philo *philo)
     /******************************/
     /*2--eat/update last meal, full*/
     /******************************/
-    set_long(&philo->philo_mutex, &philo->time_last_meal, get_time(MILLISECOND));
+    set_long(&philo->philo_mutex, &philo->time_last_meal,
+            get_time(MILLISECOND));
     philo->nb_meals++;
     write_status(EATING, philo, DEBUG_MODE);
     precise_usleep(philo->data->time_to_eat, philo->data);
@@ -56,7 +71,17 @@ void    *diner_simulation(void *data)
     t_philo *philo;
 
     philo = (t_philo *)data;
+    /******************************/
+    /*SPINLOCK*/
     wait_all_thread(philo->data);
+    /******************************/
+    /*Parametrer l heure du dernier repas*/
+    set_long(&philo->philo_mutex, &philo->time_last_meal,
+            get_time(MILLISECOND));
+    /******************************/
+    /*Synchronise le moniteur avec le nombre de threads qui tourne*/
+    increase_long(&philo->data->table_mutex, &philo->data->thread_running_nb);
+    /******************************/
     while(!diner_finished(philo->data))
     {
         /*im full ?*/
@@ -80,8 +105,8 @@ void    diner_start(t_data *table)
     i = 0;
     if (table->nb_meals_limit == 0)
         return ;
-    //else if (table->nb_philo == 1)
-    // to do 
+    else if (table->nb_philo == 1)
+        safe_thread(&table->philo[0].thread_pos, alone_philo, &table->philo[0], CREATE);
     else
     {
         while(i < table->nb_philo)
@@ -93,7 +118,7 @@ void    diner_start(t_data *table)
     }
     /*moniteur des morts*/
     safe_thread(&table->monitor, monitor_dinner, table, CREATE);
-    /*debut de du diner*/
+    /*debut du diner*/
     table->begin = get_time(MILLISECOND);
     /*tout les threads philo sont prets*/
     set_bool(&table->table_mutex, &table->all_thread_ready, true);
@@ -104,4 +129,6 @@ void    diner_start(t_data *table)
         safe_thread(&table->philo[i].thread_pos, NULL, NULL, JOIN);
         i++;
      }
+     set_bool(&table->table_mutex, &table->end, true);    // message simu terminer ??
+     safe_thread(&table->monitor, NULL, NULL, JOIN);
 }

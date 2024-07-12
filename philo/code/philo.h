@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:23:29 by yonieva           #+#    #+#             */
-/*   Updated: 2024/07/12 01:00:51 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/07/13 00:46:01 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ typedef enum e_time
 	void    	*safe_malloc(size_t bytes);
 	void    	safe_mutex(t_mutex *mutex, t_lexic lexic);
 	void 		safe_thread(pthread_t *thread, void *(*foo)(void *),
-    				void *data, t_lexic lexic);
+					void *data, t_lexic lexic);
 /*Mutex locks*/
 	void    	set_bool(t_mutex *mutex, bool *dest, bool value);
 	bool    	get_bool(t_mutex *mutex, bool *value);
@@ -121,9 +121,13 @@ typedef enum e_time
 	void 		wait_all_thread(t_data *table);
 	long    	get_time(t_time time_code);
 	void    	precise_usleep(long usec, t_data *table);
+	void		increase_long(t_mutex *mutex, long *value);
+	bool		all_thread_running(t_mutex *mutex, long *threads, long nb_philo);
 /*Diner*/	
 	void    	*diner_simulation(void *data);
 	void    	diner_start(t_data *table);
 /*Affichage*/
 	void    	write_status(t_philo_status status, t_philo *philo, bool debug);
+	void		*monitor_dinner(void *data);
+	void		*alone_philo(void *arg);
 #endif

@@ -14,6 +14,21 @@
 
 /*[time millisecond] [philo pos] [action]*/
 
+static	bool	philo_died(t_philo *philo)
+{
+	long elapsed;
+	long t_to_die;
+	/*return faux si le philo a juste finit sa simulation a lui*/
+	if (get_bool(&philo->philo_mutex, &philo->full))
+		return (false);
+
+	elapsed = get_time(MILLISECOND) - get_long(&philo->philo_mutex, &philo->time_last_meal);
+	t_to_die = philo->data->time_to_die / 1e3;
+	if (elapsed > t_to_die)
+		return (true);
+	return (false);
+}
+
 static void	write_status_debug(t_philo_status status, t_philo *philo, long elapsed)
 
 {
@@ -61,9 +76,25 @@ void    write_status(t_philo_status status, t_philo *philo, bool debug)
 
 void	*monitor_dinner(void *data)
 {
+	int i;
 	t_data *table;
 
 	table = (t_data *)data;
-	while (!all_thread_running())
+	/*SPINLOCK TAN QUE TOUT THREADS PAS PRET*/
+	while (!all_thread_running(&table->table_mutex, &table->thread_running_nb,
+				table->nb_philo))
+		;
+	while (!diner_finished(table))
+	{
+		i = -1;
+		while (++i < table->nb_philo && !diner_finished(table))
+		{
+			if (philo_died(table->philo + i))
+			{
+				set_bool(&table->table_mutex, &table->end, true);
+				write_status(DIED, table->philo + i, DEBUG_MODE);
+			}
+		} 
+	}
 	return (NULL);
 }

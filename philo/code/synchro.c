@@ -65,7 +65,21 @@ void    precise_usleep(long usec, t_data *table)
     }
 }
 
-bool    all_thread_ready()
+bool    all_thread_running(t_mutex *mutex, long *threads, long nb_philo)
 {
-    
+    bool    ret;
+
+    ret = false;
+    safe_mutex(mutex, LOCK);
+    if (*threads == nb_philo)
+        ret = true;
+    safe_mutex(mutex, UNLOCK);
+    return (ret); 
+}
+
+void    increase_long(t_mutex *mutex, long *value)
+{
+    safe_mutex(mutex, LOCK);
+    (*value)++;
+    safe_mutex(mutex, UNLOCK);
 }

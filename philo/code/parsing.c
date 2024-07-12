@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:55:13 by yonieva           #+#    #+#             */
-/*   Updated: 2024/07/12 00:18:52 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/07/13 01:21:10 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,3 +65,5 @@ void    parsing(t_data *table, char **av)
     else
         table->nb_meals_limit = -1;
 }
+
+//void    clean(t_table *table)
