@@ -33,17 +33,17 @@ static void	write_status_debug(t_philo_status status, t_philo *philo, long elaps
 
 {
 	if (TAKE_FIRST_FORK == status && !diner_finished(philo->data))
-		printf("%6ld⏲️ Philo %d ↪️s'empare de sa premiere fourchette [🍴 en position %d]\n", elapsed, philo->position, philo->first_fork->position);
+		printf("%6ld⏲️ Philo %d ↪️ s'empare de sa premiere fourchette [🍴 en position %d]\n", elapsed, philo->position, philo->first_fork->position);
 	else if (TAKE_SECOND_FORK == status && !diner_finished(philo->data))
-		printf("%6ld⏲️ Philo %d ↪️s'empare de sa seconde fourchette [🍴 en position %d]\n", elapsed, philo->position, philo->second_fork->position);
+		printf("%6ld⏲️ Philo %d ↪️ s'empare de sa seconde fourchette [🍴 en position %d]\n", elapsed, philo->position, philo->second_fork->position);
 	else if (EATING == status && !diner_finished(philo->data))
-		printf("%6ld⏲️ Philo %d 🥵est en train de s'empifrer🥵[ %ld 🍲 engloutis au total ]\n", elapsed, philo->position, philo->nb_meals);
+		printf("%6ld⏲️ Philo %d 🥵 est en train de s'empifrer🥵[ %ld 🍲 engloutis au total ]\n", elapsed, philo->position, philo->nb_meals);
 	else if (SLEEPING == status && !diner_finished(philo->data))
-		printf("%6ld⏲️ Philo %d 😴est en train de ronfler😴\n", elapsed, philo->position);
+		printf("%6ld⏲️ Philo %d 😴 est en train de ronfler😴\n", elapsed, philo->position);
 	else if (THINKING == status && !diner_finished(philo->data))
-		printf("%6ld⏲️ Philo %d 🤔fait mine de reflechir🤔\n", elapsed, philo->position);
-	else if (DIED == status && !diner_finished(philo->data))
-		printf("%6ld⏲️ Philo %d 💀a succomber a tous ces efforts ...💀\n", elapsed, philo->position);  
+		printf("%6ld⏲️ Philo %d 🤔 fait mine de reflechir🤔\n", elapsed, philo->position);
+	else if (DIED == status)
+		printf("%6ld⏲️ Philo %d 💀 a succomber a tous ces efforts ...💀\n", elapsed, philo->position);  
 }
 
 void    write_status(t_philo_status status, t_philo *philo, bool debug)

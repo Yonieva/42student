@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 15:23:29 by yonieva           #+#    #+#             */
-/*   Updated: 2024/07/13 00:46:01 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/07/14 15:41:21 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ typedef enum e_time
 	void    	parsing(t_data *table, char **av);
 	const char*	valid_input(const char *str);
 	long		ft_atol(const char *str);
+	void		clean(t_data *table);
 /*Init*/
 	void		data_init(t_data *table);
 /*Errors*/
@@ -123,9 +124,11 @@ typedef enum e_time
 	void    	precise_usleep(long usec, t_data *table);
 	void		increase_long(t_mutex *mutex, long *value);
 	bool		all_thread_running(t_mutex *mutex, long *threads, long nb_philo);
+	void		desynchro(t_philo *philo);
 /*Diner*/	
 	void    	*diner_simulation(void *data);
 	void    	diner_start(t_data *table);
+	void 		thinking(t_philo *philo, bool value);
 /*Affichage*/
 	void    	write_status(t_philo_status status, t_philo *philo, bool debug);
 	void		*monitor_dinner(void *data);

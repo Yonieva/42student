@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:48:50 by yonieva           #+#    #+#             */
-/*   Updated: 2024/07/08 16:27:33 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/07/14 15:55:33 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,10 @@ int main (int ac, char **av)
         parsing(&table, av);
         data_init(&table);
         diner_start(&table);
-        //clean(&table);
+        clean(&table);
     }
     else
         ft_error(1);
+    printf("\033[32m***********     LE REPAS EST TERMINE     ***********\n");
     return(0);
-
 }

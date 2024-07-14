@@ -56,7 +56,7 @@ void    precise_usleep(long usec, t_data *table)
         rem = usec - elapsed;
 
         if (rem > 1e3)
-            usleep(usec / 2);
+            usleep(rem / 2);
         else
         {
             while (get_time(MICROSECOND) - start < usec)
@@ -77,9 +77,16 @@ bool    all_thread_running(t_mutex *mutex, long *threads, long nb_philo)
     return (ret); 
 }
 
-void    increase_long(t_mutex *mutex, long *value)
+void    desynchro(t_philo *philo)
 {
-    safe_mutex(mutex, LOCK);
-    (*value)++;
-    safe_mutex(mutex, UNLOCK);
+    if(philo->data->nb_philo % 2 == 0)
+    {
+        if (philo->position % 2 == 0)
+            precise_usleep(3e4, philo->data);
+    }
+    else
+    {
+        if (philo->position % 2)
+            thinking(philo, true);
+    }
 }

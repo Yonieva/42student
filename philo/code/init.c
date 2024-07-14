@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/05 14:49:56 by yonieva           #+#    #+#             */
-/*   Updated: 2024/07/12 22:11:11 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/07/14 15:25:27 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,11 @@ void    data_init(t_data *table)
         i++;
     }
     init_philo(table);
+}
+
+void    increase_long(t_mutex *mutex, long *value)
+{
+    safe_mutex(mutex, LOCK);
+    (*value)++;
+    safe_mutex(mutex, UNLOCK);
 }

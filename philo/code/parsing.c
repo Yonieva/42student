@@ -6,7 +6,7 @@
 /*   By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/17 14:55:13 by yonieva           #+#    #+#             */
-/*   Updated: 2024/07/13 01:21:10 by yonieva          ###   ########.fr       */
+/*   Updated: 2024/07/14 14:56:30 by yonieva          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,20 @@ void    parsing(t_data *table, char **av)
         table->nb_meals_limit = -1;
 }
 
-//void    clean(t_table *table)
+void    clean(t_data *table)
+{
+    t_philo *philo;
+
+    int i;
+    
+    i = -1;
+    while (++i < table->nb_philo)
+    {
+        philo = table->philo + i;
+        safe_mutex(&philo->philo_mutex, DESTROY);
+    }
+    safe_mutex(&table->write_mutex, DESTROY);
+    safe_mutex(&table->table_mutex, DESTROY);
+    free(table->fork);
+    free(table->philo);
+}
