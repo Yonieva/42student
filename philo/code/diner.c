@@ -44,7 +44,9 @@ void	*alone_philo(void *arg)
 
 	philo = (t_philo *)arg;
 	wait_all_thread(philo->data);
-	set_long(&philo->philo_mutex, &philo->time_last_meal, get_time(MILLISECOND));
+	set_long(&philo->philo_mutex,
+		&philo->time_last_meal,
+		get_time(MILLISECOND));
 	increase_long(&philo->data->table_mutex, &philo->data->thread_running_nb);
 	write_status(TAKE_FIRST_FORK, philo, DEBUG_MODE);
 	while (!diner_finished(philo->data))
@@ -100,7 +102,9 @@ void	diner_start(t_data *table)
 	if (table->nb_meals_limit == 0)
 		return ;
 	else if (table->nb_philo == 1)
-		safe_thread(&table->philo[0].thread_pos, alone_philo, &table->philo[0], CREATE);
+		safe_thread(&table->philo[0].thread_pos,
+			alone_philo,
+			&table->philo[0], CREATE);
 	else
 	{
 		while (++i < table->nb_philo)

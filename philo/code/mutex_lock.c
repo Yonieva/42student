@@ -10,47 +10,43 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "philo.h"
 
-void    set_bool(t_mutex *mutex, bool *dest, bool value)
+void	set_bool(t_mutex *mutex, bool *dest, bool value)
 {
-    safe_mutex(mutex, LOCK);
-    *dest = value;
-    safe_mutex(mutex, UNLOCK);
+	safe_mutex(mutex, LOCK);
+	*dest = value;
+	safe_mutex(mutex, UNLOCK);
 }
 
-bool    get_bool(t_mutex *mutex, bool *value)
+bool	get_bool(t_mutex *mutex, bool *value)
 {
-    bool ret;
+	bool	ret;
 
-    safe_mutex(mutex, LOCK);
-    ret = *value;
-    safe_mutex(mutex, UNLOCK);
-    return (ret);
+	safe_mutex(mutex, LOCK);
+	ret = *value;
+	safe_mutex(mutex, UNLOCK);
+	return (ret);
 }
 
-long    get_long(t_mutex *mutex, long *value)
+long	get_long(t_mutex *mutex, long *value)
 {
-    long    ret;
+	long	ret;
 
-    safe_mutex(mutex, LOCK);
-    ret = *value;
-    safe_mutex(mutex, UNLOCK);
-    return (ret);
-
-
+	safe_mutex(mutex, LOCK);
+	ret = *value;
+	safe_mutex(mutex, UNLOCK);
+	return (ret);
 }
 
-void    set_long(t_mutex *mutex, long *dest, long value)
+void	set_long(t_mutex *mutex, long *dest, long value)
 {
-    safe_mutex(mutex, LOCK);
-    *dest = value;
-    safe_mutex(mutex, UNLOCK);
+	safe_mutex(mutex, LOCK);
+	*dest = value;
+	safe_mutex(mutex, UNLOCK);
 }
 
-bool    diner_finished(t_data *table)
+bool	diner_finished(t_data *table)
 {
-    return (get_bool(&table->table_mutex, &table->end));
+	return (get_bool(&table->table_mutex, &table->end));
 }
