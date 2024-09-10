@@ -23,7 +23,7 @@ void	ft_error(int index)
 	if (index == 4)
 		printf("\033[33m🚨Une valeur saisie depasse la limite INT_MAX🚨\n");
 	if (index == 5)
-		printf("\033[33m🚨Une valeur de temps depasse la limite 60ms🚨\n");
+		printf("\033[33m🚨Une valeur de temps est en dessous de 60ms🚨\n");
 	if (index == 6)
 		return (exit(EXIT_FAILURE));
 	return (exit(EXIT_FAILURE));
