@@ -66,7 +66,7 @@ void	write_status(t_philo_status status, t_philo *philo, bool debug)
 	elapsed = get_time(MILLISECOND) - philo->data->begin;
 	if (philo->full)
 		return ;
-	safe_mutex(& philo->data->write_mutex, LOCK);
+	safe_mutex(&philo->data->write_mutex, LOCK);
 	if (debug)
 		write_smiley(status, philo, elapsed);
 	else
@@ -84,7 +84,7 @@ void	write_status(t_philo_status status, t_philo *philo, bool debug)
 		else if (DIED == status && !diner_finished(philo->data))
 			printf("%-6ld    %d mort\n", elapsed, philo->position);
 	}
-	safe_mutex(& philo->data->write_mutex, UNLOCK);
+	safe_mutex(&philo->data->write_mutex, UNLOCK);
 }
 
 /*SPINLOCK TAN QUE TOUT THREADS PAS PRET*/
