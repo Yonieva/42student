@@ -46,7 +46,7 @@ void	*safe_malloc(size_t bytes)
 /*MUTEX & THREAD SAFE***************************************************/
 static void	error_mutex_or_pthread(int status)
 {
-	fputs("\n\e[1A", stdout);
+	//fputs("\n\e[1A", stdout);
 	if (status == 0)
 		return ;
 	else

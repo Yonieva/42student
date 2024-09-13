@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: yonieva <yonieva@student.42.fr>            +#+  +:+       +#+         #
+#    By: yonieva <yonieva@student.42perpignan.fr    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 15:26:27 by yonieva           #+#    #+#              #
-#    Updated: 2024/09/11 21:14:50 by yonieva          ###   ########.fr        #
+#    Updated: 2024/09/12 15:08:28 by yonieva          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ OBJS = ${addprefix ./obj/, ${SRCFILES:.c=.o}}
 
 DEP = ${OBJS:.o=.d}
 
-CFLAGS = -Wall -Werror -Wextra -g
-
+CFLAGS = -Wall -Werror -Wextra -g -pthread
+ 
 RS=        	 \033[0m
 DARK=        \033[1;32m
 RED=         \033[31m
