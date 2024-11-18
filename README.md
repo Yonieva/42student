@@ -1,6 +1,6 @@
 MON CURSUS  42                           
                                                                 
-Piscine Aout 2023
+Piscine (Concours) Aout 2023
 
 Promotion Octobre 2023
 
