@@ -12,4 +12,4 @@ Projets realises et skills :
 (https://github.com/user-attachments/files/17805576/Projets_realises_et_skills_pendant_le_tronc_commun-42Perpignan_1.pdf)
 
 
-![Bannière](https://tenor.com/fr/view/xavier-niel-rigole-free-france-inter-xn-gif-17533110582661770719)
+![Bannière](xavier-niel-rigole.gif)
