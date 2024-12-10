@@ -1,8 +1,10 @@
-MON CURSUS  42                           
+MON CURSUS  42 en language C                           
                                                                 
 Piscine (Concours) Aout 2023
 
 Promotion Octobre 2023
+
+Tel : 06 28 32 27 46
 
 Mail pro : onievayoan@gmail.com
 
